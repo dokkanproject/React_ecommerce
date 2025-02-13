@@ -20,15 +20,6 @@ const ListadoItems = () => {
         <Grid item xs={8}>
           <Item><Producto/></Item>
         </Grid>
-        <Grid item xs={8}>
-          <Item><Producto/></Item>
-        </Grid>
-        <Grid item xs={8}>
-          <Item><Producto/></Item>
-        </Grid>
-        <Grid item xs={8}>
-          <Item><Producto/></Item>
-        </Grid>
       </Grid>
     </Box>
   );

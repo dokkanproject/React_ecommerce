@@ -11,17 +11,24 @@ const Producto = () =>
     return (
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia
-            sx={{ height: 140 }}
-            image="/static/images/cards/contemplative-reptile.jpg"
-            title="green iguana"
+            sx={{ height: 250 }}
+            image="./src/assets/Productos/celular_samsung.png"
+            title="Galaxy A25"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Lizard
+            <Typography gutterBottom variant="h6" component="div">
+                Galaxy A25 5G Blue Black 128GB
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              Lizards are a widespread group of squamate reptiles, with over 6,000
-              species, ranging across all continents except Antarctica
+            <Typography variant="body2" sx={{ color: 'text.secondary', textAlign:'left' }}>
+                <p>-Pantalla de 6.5" Full HD+</p>
+                <p>-Cámara trasera de 50 MP con estabilizador de imagen</p>
+                <p>-Procesador Octa-core 5nm</p>
+            </Typography>
+            <Typography sx={{ color: '#aeaeae', textAlign:'center', textDecoration:'line-through', fontSize:'13px' }}>
+            $ 669.999
+            </Typography>
+            <Typography sx={{ color: '#1e1e1e', textAlign:'center', fontSize:'16px', fontWeight:'bold' }}>
+            $ 499.999
             </Typography>
           </CardContent>
           <CardActions>

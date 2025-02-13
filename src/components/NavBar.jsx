@@ -18,22 +18,15 @@ const categorias = ['Celulares', 'Tablets', 'Auriculares'];
 
 const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
     };
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
     return (
         <AppBar position="fixed">
             <Container maxWidth="xl">
@@ -54,7 +47,7 @@ const NavBar = () => {
               textDecoration: 'none',
             }}
           >
-            MI TIENDA
+            TECH FUSION
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -92,7 +85,7 @@ const NavBar = () => {
             </Menu>
           </Box>
             <IconButton className="icono">
-                <Avatar alt="Massimo" className='avatar' src="./src/assets/logo.png" />
+                <Avatar alt="Massimo" className='avatar' src="./src/assets/logo_techFusion.png" />
             </IconButton>
           <Typography
             variant="h5"
@@ -110,7 +103,7 @@ const NavBar = () => {
               textDecoration: 'none',
             }}
           >
-            MI TIENDA
+            TECH FUSION
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {categorias.map((page) => (
