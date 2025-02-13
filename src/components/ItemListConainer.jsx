@@ -1,79 +1,37 @@
 import * as React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid2';
+import Producto from './Producto';
 
 const ListadoItems = () => {
-    return (
-        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            </ListItemAvatar>
-            <ListItemText
-              primary="Brunch this weekend?"
-              secondary={
-                <React.Fragment>
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    sx={{ color: 'text.primary', display: 'inline' }}
-                  >
-                    Iphone 11
-                  </Typography>
-                  {" — Descripción del Producto…"}
-                </React.Fragment>
-              }
-            />
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-            </ListItemAvatar>
-            <ListItemText
-              primary="Summer BBQ"
-              secondary={
-                <React.Fragment>
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    sx={{ color: 'text.primary', display: 'inline' }}
-                  >
-                    Samsung S25
-                  </Typography>
-                  {" — Descripción del Producto..."}
-                </React.Fragment>
-              }
-            />
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-            </ListItemAvatar>
-            <ListItemText
-              primary="Oui Oui"
-              secondary={
-                <React.Fragment>
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    sx={{ color: 'text.primary', display: 'inline' }}
-                  >
-                    Morotola Razor
-                  </Typography>
-                  {' — Descripción del Producto…'}
-                </React.Fragment>
-              }
-            />
-          </ListItem>
-        </List>
-      );
+  const Item = styled(Paper)(({ theme }) => ({}));
+
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid className="productoContainer" container spacing={4} columns={16}>
+        <Grid item xs={8}>
+          <Item><Producto/></Item>
+        </Grid>
+        <Grid item xs={8}>
+          <Item><Producto/></Item>
+        </Grid>
+        <Grid item xs={8}>
+          <Item><Producto/></Item>
+        </Grid>
+        <Grid item xs={8}>
+          <Item><Producto/></Item>
+        </Grid>
+        <Grid item xs={8}>
+          <Item><Producto/></Item>
+        </Grid>
+        <Grid item xs={8}>
+          <Item><Producto/></Item>
+        </Grid>
+      </Grid>
+    </Box>
+  );
 }
 
 export default ListadoItems

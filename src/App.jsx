@@ -7,7 +7,7 @@ function App() {
   return (
     <Box>
       <NavBar/>
-      <ListadoItems/>
+      <ListadoItems sx={{ flexGrow: 1 }}/>
     </Box>
   );
 }

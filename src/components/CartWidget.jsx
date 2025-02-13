@@ -1,12 +1,24 @@
+import * as React from 'react';
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Box } from '@mui/material';
 
-const CartWidget = ({cantidad}) => {
+const CartWidget = () => {
+
+    const StyledBadge = styled(Badge)(({ theme }) => ({
+        '& .MuiBadge-badge': {
+          border: `1px solid ${theme.palette.background.paper}`,
+          padding: '0 4px',
+        },
+      }));
+
     return (
-        <Box>
-            <ShoppingCartIcon />
-            <p>{cantidad}</p>
-        </Box>
+        <IconButton aria-label="cart">
+        <StyledBadge badgeContent={4} color="primary">
+            <ShoppingCartIcon className='cartIcon' />
+        </StyledBadge>
+        </IconButton>
     )
 }
 

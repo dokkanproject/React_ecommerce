@@ -8,6 +8,17 @@
   width: 100% !important;
   background-color: #101010;
 }
+.cartIcon
+{
+  color: #ffffff !important;
+}
+.productoContainer{
+  margin-top: 120px !important;
+  display:flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
 .avatar{
   width: 8%;
   height: auto;
