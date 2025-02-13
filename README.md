@@ -1,8 +1,11 @@
-# React + Vite
+# PreEntrega 1 - Massimo Gagliardi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
++ Cre creó la Visual del Ecommerce de Productos Tecnológicos
+  + Desarrollo del Componente NavBar con 3 categorías
+      -   Celulares
+      -   Tablets
+      -   Auriculares
++ Se agregó el nombre de la Tienda (Tech Fusion
++ Desarrollo del Componente CardWidget
++ Desarrollo del Componente ItemListContainer
++ Desarrollo del Componente Producto
