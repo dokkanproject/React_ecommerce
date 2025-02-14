@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import ListItemText from '@mui/material/ListItemText';
 
 const Producto = () =>
 {
@@ -19,11 +20,10 @@ const Producto = () =>
             <Typography gutterBottom variant="h6" component="div">
                 Galaxy A25 5G Blue Black 128GB
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary', textAlign:'left' }}>
-                <p>-Pantalla de 6.5" Full HD+</p>
-                <p>-Cámara trasera de 50 MP con estabilizador de imagen</p>
-                <p>-Procesador Octa-core 5nm</p>
-            </Typography>
+            <ListItemText variant="body2" sx={{ color: 'text.secondary', textAlign:'left' }}>-Pantalla de 6.5" Full HD+</ListItemText>
+            <ListItemText variant="body2" sx={{ color: 'text.secondary', textAlign:'left' }}>-Cámara trasera de 50 MP con estabilizador de imagen</ListItemText>
+            <ListItemText variant="body2" sx={{ color: 'text.secondary', textAlign:'left' }}>-Procesador Octa-core 5nm</ListItemText>
+            
             <Typography sx={{ color: '#aeaeae', textAlign:'center', textDecoration:'line-through', fontSize:'13px' }}>
             $ 669.999
             </Typography>

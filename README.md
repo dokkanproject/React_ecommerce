@@ -5,7 +5,7 @@
       -   Celulares
       -   Tablets
       -   Auriculares
-+ Se agregó el nombre de la Tienda (Tech Fusion
++ Se agregó el nombre de la Tienda (Tech Fusion)
 + Desarrollo del Componente CardWidget
 + Desarrollo del Componente ItemListContainer
 + Desarrollo del Componente Producto
