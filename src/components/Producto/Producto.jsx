@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -6,6 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ListItemText from '@mui/material/ListItemText';
+import "./Producto.css";
 
 const Producto = () =>
 {
@@ -32,8 +34,8 @@ const Producto = () =>
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">RESERVAR</Button>
-            <Button size="small">COMPRAR</Button>
+            <Button className='BotonReservar' size="small">RESERVAR</Button>
+            <Button className='BotonComprar' size="small">COMPRAR</Button>
           </CardActions>
         </Card>
       );

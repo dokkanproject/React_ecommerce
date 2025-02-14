@@ -1,0 +1,120 @@
+/* CSS  Boton comprar*/
+.BotonComprar {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: #ffffff !important;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.BotonComprar:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.BotonComprar:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+/* CSS Boton Reservar*/
+.BotonReservar {
+  align-items: center;
+  background-color: #FFE7E7 !important;
+  background-position: 0 0;
+  border: 1px solid #FEE0E0 !important;
+  border-radius: 11px !important;
+  box-sizing: border-box !important;
+  color: #D33A2C !important;
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 33.4929px;
+  padding: 2px 12px;
+  text-align: left;
+  text-decoration: none;
+  text-shadow: none;
+  text-underline-offset: 1px;
+  transition: border .2s ease-in-out,box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  word-break: break-word;
+}
+
+.BotonReservar:active,
+.BotonReservar:hover,
+.BotonReservar:focus {
+  outline: 0;
+}
+
+
+.BotonReservar:active {
+  background-color: #D33A2C !important;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset !important;
+  color: #FFFFFF !important;
+}
+
+.BotonReservar:hover {
+  background-color: #FFE3E3;
+  border-color: #FAA4A4;
+}
+
+.BotonReservar:active:hover,
+.BotonReservar:focus:hover,
+.BotonReservar:focus {
+  background-color: #D33A2C !important;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset !important;
+  color: #FFFFFF !important;
+}
