@@ -12,13 +12,13 @@ const ListadoItems = () => {
     <Box sx={{ flexGrow: 1 }}>
       <Grid className="productoContainer" container spacing={4} columns={16}>
         <Grid item xs={8}>
-          <Item><Producto/></Item>
+          <Producto/>
         </Grid>
         <Grid item xs={8}>
-          <Item><Producto/></Item>
+          <Producto/>
         </Grid>
         <Grid item xs={8}>
-          <Item><Producto/></Item>
+          <Producto/>
         </Grid>
       </Grid>
     </Box>

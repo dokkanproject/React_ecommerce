@@ -18,6 +18,10 @@
   justify-content: center !important;
   align-items: center !important;
 }
+.tarjetaProducto{
+  background-color: #f1f0f0 !important;
+  border-radius: 13px !important;
+}
 
 .avatar{
   width: 8%;
