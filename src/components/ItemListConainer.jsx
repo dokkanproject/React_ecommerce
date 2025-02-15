@@ -8,13 +8,13 @@ const ListadoItems = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid className="productoContainer" container spacing={4} columns={16}>
-        <Grid item xs={8}>
+        <Grid xs={8}>
           <Producto/>
         </Grid>
-        <Grid item xs={8}>
+        <Grid xs={8}>
           <Producto/>
         </Grid>
-        <Grid item xs={8}>
+        <Grid xs={8}>
           <Producto/>
         </Grid>
       </Grid>

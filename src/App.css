@@ -6,11 +6,11 @@
 
 .toolbar{
   width: 100% !important;
-  background-color: #101010;
+  background-color: #eeeeee;
 }
 .cartIcon
 {
-  color: #ffffff !important;
+  color: #101010 !important;
 }
 .productoContainer{
   margin-top: 120px !important;

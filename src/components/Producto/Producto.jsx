@@ -7,6 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ListItemText from '@mui/material/ListItemText';
+import Rating from '@mui/material/Rating';
 import "./Producto.css";
 
 const Producto = () =>
@@ -22,6 +23,7 @@ const Producto = () =>
             <Typography gutterBottom variant="h6" component="div">
                 Galaxy A25 5G Blue Black 128GB
             </Typography>
+            <Rating name="read-only" value={5} readOnly />
             <ListItemText variant="body2" sx={{ color: 'text.secondary', textAlign:'left' }}>- Pantalla de 6.5" Full HD+</ListItemText>
             <ListItemText variant="body2" sx={{ color: 'text.secondary', textAlign:'left' }}>- Cámara trasera de 50 MP con estabilizador de imagen</ListItemText>
             <ListItemText variant="body2" sx={{ color: 'text.secondary', textAlign:'left' }}>- Procesador Octa-core 5nm</ListItemText>
@@ -33,7 +35,7 @@ const Producto = () =>
             $ 499.999
             </Typography>
           </CardContent>
-          <CardActions>
+          <CardActions className='botonContainer'>
             <Button className='BotonReservar' size="small">RESERVAR</Button>
             <Button className='BotonComprar' size="small">COMPRAR</Button>
           </CardActions>

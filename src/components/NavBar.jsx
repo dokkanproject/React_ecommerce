@@ -43,7 +43,7 @@ const NavBar = () => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#101010',
               textDecoration: 'none',
             }}
           >
@@ -99,7 +99,7 @@ const NavBar = () => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#101010',
               textDecoration: 'none',
             }}
           >
@@ -110,7 +110,7 @@ const NavBar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'block', color:'#101010' }}
               >
                 {page}
               </Button>

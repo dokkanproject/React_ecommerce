@@ -118,3 +118,9 @@
   box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset !important;
   color: #FFFFFF !important;
 }
+
+.botonContainer
+{
+  text-align: center;
+  display: block !important;
+}
