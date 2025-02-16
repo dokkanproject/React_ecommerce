@@ -28,7 +28,7 @@ const NavBar = () => {
     };
 
     return (
-        <AppBar position="fixed">
+        <AppBar position="fixed" sx={{backgroundColor:'#eeeeee'}}>
             <Container maxWidth="xl">
             <Toolbar className='toolbar'>
 

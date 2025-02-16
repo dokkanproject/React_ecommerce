@@ -9,16 +9,22 @@ import Typography from '@mui/material/Typography';
 import ListItemText from '@mui/material/ListItemText';
 import Rating from '@mui/material/Rating';
 import "./Producto.css";
+import { Box } from '@mui/material';
+import { blue } from '@mui/material/colors';
 
 const Producto = () =>
 {
     return (
         <Card className="tarjetaProducto" sx={{ maxWidth: 345}}>
+          <Box sx={{background:'#000000',position:'top', height:35, alignContent:'center'}}>
+            <Typography sx={{color:'#ffffff'}}>STOCK DISPONIBLE: 15</Typography>
+          </Box>
           <CardMedia
             sx={{ height: 250 }}
             image="./src/assets/Productos/celular_samsung.png"
             title="Galaxy A25"
           />
+          
           <CardContent>
             <Typography gutterBottom variant="h6" component="div">
                 Galaxy A25 5G Blue Black 128GB
@@ -36,8 +42,7 @@ const Producto = () =>
             </Typography>
           </CardContent>
           <CardActions className='botonContainer'>
-            <Button className='BotonReservar' size="small">RESERVAR</Button>
-            <Button className='BotonComprar' size="small">COMPRAR</Button>
+            <Button className='BotonComprar' size="small">AGREGAR AL CARRITO</Button>
           </CardActions>
         </Card>
       );

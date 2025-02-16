@@ -12,6 +12,8 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
 
 .BotonComprar:before {
