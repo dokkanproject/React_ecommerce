@@ -9,3 +9,5 @@
 + Desarrollo del Componente CardWidget
 + Desarrollo del Componente ItemListContainer
 + Desarrollo del Componente Producto
++ Se creó el Componente ItemCount y se importó en el Producto
+      

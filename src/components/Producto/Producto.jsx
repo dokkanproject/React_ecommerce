@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import ListItemText from '@mui/material/ListItemText';
 import Rating from '@mui/material/Rating';
 import "./Producto.css";
+import ItemCount from "../ItemCount";
 import { Box } from '@mui/material';
 import { blue } from '@mui/material/colors';
 
@@ -42,7 +43,7 @@ const Producto = () =>
             </Typography>
           </CardContent>
           <CardActions className='botonContainer'>
-            <Button className='BotonComprar' size="small">AGREGAR AL CARRITO</Button>
+            <ItemCount></ItemCount>
           </CardActions>
         </Card>
       );

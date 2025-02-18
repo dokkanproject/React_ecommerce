@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid2';
 import Producto from './Producto/Producto';
+import { Typography } from '@mui/material';
 
 const ListadoItems = () => {
 
