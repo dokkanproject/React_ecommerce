@@ -4,11 +4,11 @@ import { Box, Input, Typography } from '@mui/material';
 import '../App.css';
 import { useState, useEffect } from 'react';
 
-const ItemCount = () =>
+const ItemCount = ({stockDisp}) =>
 {
     const [contador, setContador] = useState(1)
 
-    let stock = 5;
+    let stock = stockDisp;
 
     /*
     useEffect(() => {
@@ -59,9 +59,9 @@ const ItemCount = () =>
 
     return (
         <Box>
-            <Button onClick={restarContador}>-</Button>
-            <Input className='ProductInput' type='number' onChange = {(event) => onInputChange(parseInt(event.target.value))} value={contador}></Input>
-            <Button onClick={sumarContador}>+</Button>
+            <Button className='botonesMasMenos' onClick={restarContador}>-</Button>
+            <Input className='ProductInput' type='number' onChange = {(event) => onInputChange(parseInt(event.target.value))} value={contador}/>
+            <Button className='botonesMasMenos' onClick={sumarContador}>+</Button>
             <Button className='BotonComprar' onClick={onAdd} size="small">AGREGAR AL CARRITO</Button>
         </Box>
     )

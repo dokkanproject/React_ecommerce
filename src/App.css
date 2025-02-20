@@ -46,7 +46,11 @@
   background: transparent;
   max-width: 80px;
   height: 30px;
-  text-align: center;
+  text-align: center !important;
+}
+
+.css-1yrc8ca-MuiInputBase-input-MuiInput-input{
+  text-align: center !important;
 }
 
 /* CSS */
