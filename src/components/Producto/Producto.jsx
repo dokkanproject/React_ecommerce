@@ -28,7 +28,7 @@ const Producto = ({info}) =>
         <Typography gutterBottom variant="h6" component="div">
           {info.name}
         </Typography>
-        <Rating name="read-only" value={5} readOnly />
+        <Rating name="read-only" value={info.ranking} readOnly />
         <ListItemText variant="body2" sx={{ color: 'text.secondary', textAlign:'left' }}>- {info.descripcion[0]}</ListItemText>
         <ListItemText variant="body2" sx={{ color: 'text.secondary', textAlign:'left' }}>- {info.descripcion[1]}</ListItemText>
         <ListItemText variant="body2" sx={{ color: 'text.secondary', textAlign:'left' }}>- {info.descripcion[2]}</ListItemText>

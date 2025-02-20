@@ -1,11 +1,13 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid2';
+import Typography from '@mui/material/Typography';
 import Producto from './Producto/Producto';
 import {useEffect, useState} from 'react';
 
 const ListadoItems = () => {
 
+  const [isLoading, setLoading] = useState(true)
   const [productos, setProductos] = useState([])
 
   const miPromesa = new Promise ((resolve, reject) => {
@@ -17,7 +19,8 @@ const ListadoItems = () => {
         precio:'$ 299.999',
         descuento:'$ 189.999',
         imagen:'./src/assets/Productos/Galaxy_a05.png',
-        stock:5
+        stock:5,
+        ranking: 4
       },
       {
         id:'02',
@@ -26,7 +29,8 @@ const ListadoItems = () => {
         precio:'$ 579.999',
         descuento:'$ 399.999',
         imagen:'./src/assets/Productos/Galaxy_a24Black.png',
-        stock:3
+        stock:3,
+        ranking: 4
       },
       {
         id:'03',
@@ -35,12 +39,14 @@ const ListadoItems = () => {
         precio:'$ 3.699.999',
         descuento:'$ 2.589.999',
         imagen:'./src/assets/Productos/Galaxy_zFold.png',
-        stock:10
+        stock:10,
+        ranking: 5
       }
     ]
 
     setTimeout(()=>{
       Productos ? resolve(Productos) : reject("No Hay Productos")
+      setLoading(false)
     }, 2000);
   });
 
@@ -49,14 +55,22 @@ const ListadoItems = () => {
       console.log(res)
       setProductos(res)
     })
-  })
+  }, [])
+
+  if(isLoading){
+    return (
+      <Box sx={{ flexGrow: 1 }}>
+        <Typography sx={{ color: '#000000', textAlign:'center' }}>CARGANDO PRODUCTOS.....</Typography>
+      </Box>
+    )
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid className="productoContainer" container spacing={4} columns={16}>
         {productos.map((producto) => {
           return(
-            <Grid xs={8}>
+            <Grid key={producto.id} xs={8}>
               <Producto key={producto.id} info={producto}/>
             </Grid>
           )
