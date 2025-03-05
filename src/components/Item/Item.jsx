@@ -7,11 +7,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import ListItemText from '@mui/material/ListItemText';
 import Rating from '@mui/material/Rating';
-import "./Producto.css";
+import "./Item.css";
 import ItemCount from "../ItemCount";
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
-const Producto = ({info}) =>
+const Producto = ({info, GetItem}) =>
 {
   return (
     <Card className="tarjetaProducto" sx={{ maxWidth: 345}}>
@@ -41,6 +41,7 @@ const Producto = ({info}) =>
         </Typography>
       </CardContent>
       <CardActions className='botonContainer'>
+        <Button onClick={() => GetItem(info)}>Detalle del producto</Button>
         <ItemCount stockDisp={info.stock}></ItemCount>
       </CardActions>
     </Card>

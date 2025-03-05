@@ -2,7 +2,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid2';
 import Typography from '@mui/material/Typography';
-import Producto from './Producto/Producto';
+import CircularProgress from '@mui/material/CircularProgress';
+import Producto from './Item/Item';
+import ItemList from './ItemList/ItemList';
 import {useEffect, useState} from 'react';
 
 const ListadoItems = () => {
@@ -60,12 +62,14 @@ const ListadoItems = () => {
   if(isLoading){
     return (
       <Box sx={{ flexGrow: 1 }}>
+        <CircularProgress />
         <Typography sx={{ color: '#000000', textAlign:'center' }}>CARGANDO PRODUCTOS.....</Typography>
       </Box>
     )
   }
 
   return (
+    
     <Box sx={{ flexGrow: 1 }}>
       <Grid className="productoContainer" container spacing={4} columns={16}>
         {productos.map((producto) => {

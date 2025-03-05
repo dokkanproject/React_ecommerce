@@ -1,45 +1,24 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { Box, Input, Typography } from '@mui/material';
+import { Box, Input } from '@mui/material';
 import '../App.css';
-import { useState, useEffect } from 'react';
+import { useCount } from '../customHooks/useCount';
+import { useEffect } from 'react';
 
 const ItemCount = ({stockDisp}) =>
 {
-    const [contador, setContador] = useState(1)
-
     let stock = stockDisp;
 
-    /*
-    useEffect(() => {
-        console.log("Me estoy Renderizando al montarme/nacer solamente")
-    },[])
+    const { count, sumar, restar } = useCount(1,stock)
 
-    useEffect(() => {
-        console.log("Me estoy Renderizando al montarme/nacer y cada vez que un estado cambia")
-    })
-    */
+    
     useEffect(() => {
         console.log("Me estoy Renderizando al montarme/nacer y cada vez que el contador cambia")
-    },[contador])
-
+    },[count])
+    
     const onAdd = () =>
     {
-        console.log("Agregando al Carrito la cantidad de "+ contador)
-    }
-
-    const restarContador = () => {
-        if(contador > 1)
-        {
-            setContador(contador - 1)
-        }
-    }
-
-    const sumarContador = () => {
-        if(contador < stock){
-            setContador(contador + 1)
-        }
-        
+        console.log("Agregando al Carrito la cantidad de "+ count)
     }
 
     const onInputChange = (numero) => {
@@ -48,20 +27,20 @@ const ItemCount = ({stockDisp}) =>
         {
             console.log("TIRO NAN")
         }
-        else if(contador < stock)
+        else if(count < stock)
         {
-            setContador(numero)
+            setCount(numero)
         }
         else{
-            setContador(stock)
+            setCount(stock)
         }
     }
-
+        
     return (
         <Box>
-            <Button className='botonesMasMenos' onClick={restarContador}>-</Button>
-            <Input className='ProductInput' type='number' onChange = {(event) => onInputChange(parseInt(event.target.value))} value={contador}/>
-            <Button className='botonesMasMenos' onClick={sumarContador}>+</Button>
+            <Button className='botonesMasMenos' onClick={restar}>-</Button>
+            <Input className='ProductInput' type='number' onChange = {(event) => onInputChange(parseInt(event.target.value))} value={count}/>
+            <Button className='botonesMasMenos' onClick={sumar}>+</Button>
             <Button className='BotonComprar' onClick={onAdd} size="small">AGREGAR AL CARRITO</Button>
         </Box>
     )
