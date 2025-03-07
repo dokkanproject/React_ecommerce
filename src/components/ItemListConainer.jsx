@@ -14,7 +14,7 @@ const ListadoItems = () => {
   useEffect(() => {
     const fetchProductos = async () => {
       try {
-        const response = await fetch("/src/assets/data/productos.json");
+        const response = await fetch("src/assets/data/productos.json");
         if (!response.ok) throw new Error("No se pudo cargar el archivo JSON");
         
         const data = await response.json();
