@@ -10,7 +10,7 @@ import { Box } from '@mui/material';
 const ItemDetailContainer = () =>
 {
     const { productID } = useParams(); // Obtenemos el ID de la URL
-    const { data: productos, loading, error } = useFetch("/src/assets/data/productos.json");
+    const { data: productos, loading, error } = useFetch("/assets/data/productos.json");
 
     if (loading) return(
         <Box sx={{ flexGrow: 1 }}>
