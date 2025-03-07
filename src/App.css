@@ -104,3 +104,10 @@
     height: 48px;
   }
 }
+
+.activeLink{
+  color: #0792ad;
+}
+.inactiveLink{
+  color: #1c1c1c;
+}

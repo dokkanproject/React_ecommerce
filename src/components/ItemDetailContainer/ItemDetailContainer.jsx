@@ -1,40 +1,34 @@
 import * as React from 'react';
-import {useEffect, useState} from 'react';
-import Producto from '../Item/Item';
+import { useParams } from 'react-router-dom';
+import {useFetch} from '../../customHooks/useFetch'
+import ItemDetail from '../ItemDetail/ItemDetail'
+import CircularProgress from '@mui/material/CircularProgress';
+import Typography from '@mui/material/Typography';
+
+import { Box } from '@mui/material';
 
 const ItemDetailContainer = () =>
 {
-    const [isLoading, setLoading] = useState(true)
-    const [ProductoInf,setProducto] = useState([])
+    const { productID } = useParams(); // Obtenemos el ID de la URL
+    const { data: productos, loading, error } = useFetch("/src/assets/data/productos.json");
 
-    const GetItem = (prod)  =>
-    {
-        console.log('****** '+prod)
-        return new Promise((resolve, reject) => {
-            const infoProducto = prod
-            
-            setTimeout(()=>{
-                infoProducto ? resolve(infoProducto) : reject("No Hay Productos")
-                setLoading(false)
-            }, 2000);
-        })
-    }
+    if (loading) return(
+        <Box sx={{ flexGrow: 1 }}>
+            <CircularProgress />
+            <Typography sx={{ color: '#000000', textAlign:'center' }}>CARGANDO PRODUCTO.....</Typography>
+      </Box>
+    )
+    if (error) return <p>Error: {error}</p>;
 
-    useEffect(() => {
-        miPromesa.then(res => {
-            console.log(res)
-            setProducto(res)
-        })
-    }, [])
+    // Buscar el producto por ID
+    const producto = productos.find((p) => p.id === productID);
 
-    if(isLoading){
-        return (
-            console.log('Cargando Info de Producto')
-        )
-    }
+    if (!producto) return <p>Producto no encontrado</p>;
 
     return (
-        <Producto info={ProductoInf} GetItem={GetItem} />
+        <Box>
+            <ItemDetail info={producto}/>
+        </Box>
     );
 }
 

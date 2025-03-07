@@ -10,9 +10,12 @@ import Rating from '@mui/material/Rating';
 import "./Item.css";
 import ItemCount from "../ItemCount";
 import { Box, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-const Producto = ({info, GetItem}) =>
+const Producto = ({info}) =>
 {
+  const navigate = useNavigate()
+
   return (
     <Card className="tarjetaProducto" sx={{ maxWidth: 345}}>
       <Box sx={{background:'#000000',position:'top', height:35, alignContent:'center'}}>
@@ -41,8 +44,7 @@ const Producto = ({info, GetItem}) =>
         </Typography>
       </CardContent>
       <CardActions className='botonContainer'>
-        <Button onClick={() => GetItem(info)}>Detalle del producto</Button>
-        <ItemCount stockDisp={info.stock}></ItemCount>
+        <Button onClick={() => navigate(`/detalle/${info.id}`)}>Detalle del producto</Button>
       </CardActions>
     </Card>
   );

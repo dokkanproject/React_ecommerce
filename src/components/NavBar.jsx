@@ -9,14 +9,17 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import Avatar from '@mui/material/Avatar';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import CartWidget from './CartWidget';
 
 const categorias = ['Celulares', 'Tablets', 'Auriculares'];
 
 const NavBar = () => {
+
+  const navigate = useNavigate()
     const [anchorElNav, setAnchorElNav] = React.useState(null);
 
     const handleOpenNavMenu = (event) => {
@@ -36,7 +39,7 @@ const NavBar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            onClick={() => navigate('/')}
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -45,9 +48,10 @@ const NavBar = () => {
               letterSpacing: '.3rem',
               color: '#101010',
               textDecoration: 'none',
+              cursor:'pointer',
             }}
           >
-            TECH FUSION
+          TECH FUSION
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -78,8 +82,10 @@ const NavBar = () => {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {categorias.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                <MenuItem className={({ isActive }) => (isActive ? "activeLink" : "inactiveLink")} key={page} onClick={handleCloseNavMenu}>
+                  <Typography sx={{ textAlign: 'center' }} onClick={() => navigate(`categorias/${page}`)}>
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -91,16 +97,17 @@ const NavBar = () => {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            onClick={() => navigate('/')}
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
+              fontWeight: 50,
+              letterSpacing: '.2rem',
               color: '#101010',
               textDecoration: 'none',
+              cursor:'pointer',
             }}
           >
             TECH FUSION
@@ -109,10 +116,13 @@ const NavBar = () => {
             {categorias.map((page) => (
               <Button
                 key={page}
+                className={({ isActive }) => (isActive ? "activeLink" : "inactiveLink")}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block', color:'#101010' }}
               >
+                <Typography  sx={{ textAlign: 'center' }} onClick={() => navigate(`categorias/${page}`)}>
                 {page}
+                </Typography>
               </Button>
             ))}
           </Box>
