@@ -82,8 +82,8 @@ const NavBar = () => {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {categorias.map((page) => (
-                <MenuItem className={({ isActive }) => (isActive ? "activeLink" : "inactiveLink")} key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }} onClick={() => navigate(`categorias/${page}`)}>
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography className={({ isActive }) => (isActive ? "activeLink" : "inactiveLink")} sx={{ textAlign: 'center' }} onClick={() => navigate(`categorias/${page}`)}>
                     {page}
                   </Typography>
                 </MenuItem>
@@ -116,11 +116,10 @@ const NavBar = () => {
             {categorias.map((page) => (
               <Button
                 key={page}
-                className={({ isActive }) => (isActive ? "activeLink" : "inactiveLink")}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block', color:'#101010' }}
               >
-                <Typography  sx={{ textAlign: 'center' }} onClick={() => navigate(`categorias/${page}`)}>
+                <Typography className={({ isActive }) => (isActive ? "activeLink" : "inactiveLink")}  sx={{ textAlign: 'center' }} onClick={() => navigate(`categorias/${page}`)}>
                 {page}
                 </Typography>
               </Button>
