@@ -22,5 +22,6 @@ https://react-ecommerce-eta-opal.vercel.app/
 + Se Agregó la funcionalidad de Link para la navegación de Categorías "Está Aplicado en NavBar"
 + Se Agregaro los Route para la correcta navegación de los Productos de acuerdo con el ID que se le pasa como Parametro.
 + Se movió la funcionalidad de "Agregar al Carrito" y "ItemCount" que estába en la Home y se aplicó en el Detalle del Producto.
++ Se Agregó la funcionalidad de Filtrado de Categorías en ItemListContainer y se creo un nuevo producto para "Tablets"
 
       
