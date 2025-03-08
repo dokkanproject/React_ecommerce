@@ -1,5 +1,10 @@
 # PreEntrega 2 - Massimo Gagliardi
 
+# Link del proyecto en VERCEL
+https://react-ecommerce-eta-opal.vercel.app/
+
+# Modificaciones de la Versión
+
 + Cre creó la Visual del Ecommerce de Productos Tecnológicos
   + Desarrollo del Componente NavBar con 3 categorías
       -   Celulares
