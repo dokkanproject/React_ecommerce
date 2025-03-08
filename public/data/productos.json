@@ -43,5 +43,20 @@
       "imagen": "/productos/Galaxy_zFold.png",
       "stock": 10,
       "ranking": 5
+    },
+    {
+      "id": "3",
+      "category": "Tablets",
+      "name": "Galaxy Tab S6 Lite + Book Cover Gray",
+      "descripcion": [
+        "Procesador Octa-Core",
+        "Tamaño de pantalla 2000 x 1200 (WUXGA+)",
+        "Cámara Frontal 5.0 MP"
+      ],
+      "precio": "$ 849.999",
+      "descuento": "$ 500.999",
+      "imagen": "/productos/GalaxyTabS6.png",
+      "stock": 10,
+      "ranking": 5
     }
   ]

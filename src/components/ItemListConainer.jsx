@@ -5,11 +5,14 @@ import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import Producto from './Item/Item';
 import {useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
 
 const ListadoItems = () => {
 
+  const { categoriaID } = useParams();
   const [isLoading, setLoading] = useState(true)
   const [productos, setProductos] = useState([])
+  const [productosFiltrados, setProductosFiltrados] = useState([]);
 
   useEffect(() => {
     const fetchProductos = async () => {
@@ -32,6 +35,15 @@ const ListadoItems = () => {
     fetchProductos();
   }, []);
 
+  // Filtramos los productos cuando cambia la categoría
+  useEffect(() => {
+    if (categoriaID) {
+      setProductosFiltrados(productos.filter(p => p.category === categoriaID));
+    } else {
+      setProductosFiltrados(productos);
+    }
+  }, [categoriaID, productos]); // Se ejecuta cuando cambia la categoría o la lista de productos
+
   if(isLoading){
     return (
       <Box sx={{ flexGrow: 1 }}>
@@ -44,14 +56,18 @@ const ListadoItems = () => {
   return (
     
     <Box sx={{ flexGrow: 1 }}>
-      <Grid className="productoContainer" container spacing={4} columns={16}>
-        {productos.map((producto) => {
-          return(
+     <Grid className="productoContainer" container spacing={4} columns={16}>
+        {productosFiltrados.length > 0 ? (
+          productosFiltrados.map((producto) => (
             <Grid key={producto.id} xs={8}>
-              <Producto key={producto.id} info={producto}/>
+              <Producto info={producto} />
             </Grid>
-          )
-        })}
+          ))
+        ) : (
+          <Typography sx={{ color: "#000000", textAlign: "center" }}>
+            No hay productos en esta categoría.
+          </Typography>
+        )}
       </Grid>
     </Box>
   );
