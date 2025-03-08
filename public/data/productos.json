@@ -10,7 +10,7 @@
       ],
       "precio": "$ 299.999",
       "descuento": "$ 189.999",
-      "imagen": "/src/assets/productos/Galaxy_a05.png",
+      "imagen": "/productos/Galaxy_a05.png",
       "stock": 5,
       "ranking": 4
     },
@@ -25,7 +25,7 @@
       ],
       "precio": "$ 579.999",
       "descuento": "$ 399.999",
-      "imagen": "/src/assets/productos/Galaxy_a24Black.png",
+      "imagen": "/productos/Galaxy_a24Black.png",
       "stock": 3,
       "ranking": 4
     },
@@ -40,7 +40,7 @@
       ],
       "precio": "$ 3.699.999",
       "descuento": "$ 2.589.999",
-      "imagen": "/src/assets/productos/Galaxy_zFold.png",
+      "imagen": "/productos/Galaxy_zFold.png",
       "stock": 10,
       "ranking": 5
     }
