@@ -16,8 +16,15 @@ const Producto = ({info}) =>
 {
   const navigate = useNavigate()
 
+  const onAdd = ({info}) =>
+  {
+    console.log("Agregando al Carrito la cantidad de "+info.stock)
+  }
+
   return (
-    <Card className="tarjetaProducto" sx={{ maxWidth: 345}}>
+    <Card className="tarjetaProducto" sx={{ maxWidth: 345, cursor:'pointer'}} onClick={(e) =>
+      {navigate(`/detalle/${info.id}`)}
+    }>
       <Box sx={{background:'#000000',position:'top', height:35, alignContent:'center'}}>
         <Typography sx={{color:'#ffffff'}}>STOCK DISPONIBLE: {info.stock}</Typography>
       </Box>
@@ -44,8 +51,16 @@ const Producto = ({info}) =>
         </Typography>
       </CardContent>
       <CardActions className='botonContainer'>
-        <Button onClick={() => navigate(`/detalle/${info.id}`)}>Detalle del producto</Button>
+        <Button onClick={(e) => {
+          e.stopPropagation();
+          navigate(`/detalle/${info.id}`)
+          }}>Detalle del producto</Button>
+        <Button className='BotonComprar' onClick={(e) => {
+          e.stopPropagation();
+          onAdd({info});
+        }} size="small">AGREGAR AL CARRITO</Button>
       </CardActions>
+      
     </Card>
   );
 }

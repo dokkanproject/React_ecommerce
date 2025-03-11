@@ -56,7 +56,37 @@
       "precio": "$ 849.999",
       "descuento": "$ 500.999",
       "imagen": "/productos/GalaxyTabS6.png",
-      "stock": 10,
+      "stock": 7,
       "ranking": 5
+    },
+    {
+      "id": "4",
+      "category": "Buds",
+      "name": "Galaxy Buds FE Graphite",
+      "descripcion": [
+        "Número de Micrófonos 6",
+        "Altavoces Custom 1-way",
+        "Sonido ambiente - SI"
+      ],
+      "precio": "$ 228.999",
+      "descuento": "$ 159.999",
+      "imagen": "/productos/GalaxyBudsFE_Graphite.png",
+      "stock": 20,
+      "ranking": 4
+    },
+    {
+      "id": "5",
+      "category": "Buds",
+      "name": "Galaxy Buds2 Negro",
+      "descripcion": [
+        "Número de Micrófonos 6",
+        "Versión de Bluetooh - Bluetooth v5.2",
+        "Cancelación activa de ruido - SI"
+      ],
+      "precio": "$ 228.999",
+      "descuento": "$ 159.999",
+      "imagen": "/productos/GalaxyBuds2Negro.png",
+      "stock": 14,
+      "ranking": 4
     }
   ]

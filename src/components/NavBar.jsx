@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 
 import CartWidget from './CartWidget';
 
-const categorias = ['Celulares', 'Tablets', 'Auriculares'];
+const categorias = ['Celulares', 'Tablets', 'Buds'];
 
 const NavBar = () => {
 
