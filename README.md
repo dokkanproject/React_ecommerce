@@ -6,7 +6,7 @@ https://react-ecommerce-eta-opal.vercel.app/
 # Modificaciones de la Versión
 
 + Cre creó la Visual del Ecommerce de Productos Tecnológicos
-  + Desarrollo del Componente NavBar con 3 categorías
+  + Desarrollo del Componente NavBar con 3 categorías Filtreables
       -   Celulares
       -   Tablets
       -   Auriculares
@@ -23,5 +23,6 @@ https://react-ecommerce-eta-opal.vercel.app/
 + Se Agregaro los Route para la correcta navegación de los Productos de acuerdo con el ID que se le pasa como Parametro.
 + Se movió la funcionalidad de "Agregar al Carrito" y "ItemCount" que estába en la Home y se aplicó en el Detalle del Producto.
 + Se Agregó la funcionalidad de Filtrado de Categorías en ItemListContainer y se creo un nuevo producto para "Tablets"
++ Se mejoró el Card del producto y se le agregó efecto Over y se agregó el Evento stopPropagation
 
       

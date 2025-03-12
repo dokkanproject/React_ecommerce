@@ -4,11 +4,11 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import CardActionArea from '@mui/material/CardActionArea';
 import Typography from '@mui/material/Typography';
 import ListItemText from '@mui/material/ListItemText';
 import Rating from '@mui/material/Rating';
 import "./Item.css";
-import ItemCount from "../ItemCount";
 import { Box, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
@@ -22,12 +22,18 @@ const Producto = ({info}) =>
   }
 
   return (
-    <Card className="tarjetaProducto" sx={{ maxWidth: 345, cursor:'pointer'}} onClick={(e) =>
-      {navigate(`/detalle/${info.id}`)}
-    }>
-      <Box sx={{background:'#000000',position:'top', height:35, alignContent:'center'}}>
+    <Card className="tarjetaProducto" sx={{ maxWidth: 345, cursor:'pointer'}} onClick={(e) =>{navigate(`/detalle/${info.id}`)}}>
+      <Box sx={{background:'#000000', position:'top', height:80, alignContent:'center'}}>
         <Typography sx={{color:'#ffffff'}}>STOCK DISPONIBLE: {info.stock}</Typography>
+        <CardActions className='botonContainer'>
+        <Button className='BotonComprar' onClick={(e) => {
+          e.stopPropagation();
+          onAdd({info});
+        }} size="small">AGREGAR AL CARRITO</Button>
+      </CardActions>
       </Box>
+      
+      <CardActionArea>
       <CardMedia
         sx={{ height: 250 }}
         image={info.imagen}
@@ -50,18 +56,10 @@ const Producto = ({info}) =>
         {info.descuento}
         </Typography>
       </CardContent>
-      <CardActions className='botonContainer'>
-        <Button onClick={(e) => {
-          e.stopPropagation();
-          navigate(`/detalle/${info.id}`)
-          }}>Detalle del producto</Button>
-        <Button className='BotonComprar' onClick={(e) => {
-          e.stopPropagation();
-          onAdd({info});
-        }} size="small">AGREGAR AL CARRITO</Button>
-      </CardActions>
       
+      </CardActionArea>
     </Card>
+    
   );
 }
 
