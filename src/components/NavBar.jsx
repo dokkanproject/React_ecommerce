@@ -91,7 +91,7 @@ const NavBar = () => {
             </Menu>
           </Box>
             <IconButton className="icono">
-                <Avatar alt="Massimo" className='avatar' src="./src/assets/logo_techFusion.png" />
+                <Avatar alt="Massimo" className='avatar' src="/logo_techFusion.png" />
             </IconButton>
           <Typography
             variant="h5"

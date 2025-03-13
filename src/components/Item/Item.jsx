@@ -11,15 +11,14 @@ import Rating from '@mui/material/Rating';
 import "./Item.css";
 import { Box, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { ShopContext } from '../../context/ShopContext';
 
 const Producto = ({info}) =>
 {
   const navigate = useNavigate()
 
-  const onAdd = ({info}) =>
-  {
-    console.log("Agregando al Carrito la cantidad de "+info.stock)
-  }
+  const {addToList} = useContext(ShopContext)
 
   return (
     <Card className="tarjetaProducto" sx={{ maxWidth: 345, cursor:'pointer'}} onClick={(e) =>{navigate(`/detalle/${info.id}`)}}>
@@ -28,7 +27,7 @@ const Producto = ({info}) =>
         <CardActions className='botonContainer'>
         <Button className='BotonComprar' onClick={(e) => {
           e.stopPropagation();
-          onAdd({info});
+          addToList(info,1)
         }} size="small">AGREGAR AL CARRITO</Button>
       </CardActions>
       </Box>

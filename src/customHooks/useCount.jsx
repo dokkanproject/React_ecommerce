@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-export const useCount = (initial = 1, stock) => {
-
-    const [count, setCount] = useState(initial)
+export const useCount = (count, setCount, stock) => {
 
     const restar = () => {
         if(count > 1)
@@ -18,5 +16,5 @@ export const useCount = (initial = 1, stock) => {
         
     }
 
-    return{count, sumar, restar}
+    return{sumar, restar}
 }

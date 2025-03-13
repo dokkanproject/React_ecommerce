@@ -3,8 +3,23 @@
 # Link del proyecto en VERCEL
 https://react-ecommerce-eta-opal.vercel.app/
 
-# Modificaciones de la Versión
+# Modificaciones de la Versión Para Entrega Final
++ Se Optimizó el CustomHook "useCount"
++ Se Sincronizó el Counter con el ItemDetail
++ Se Creó el Componente "Cart" que contiene el listado de los Productos Agregados
+  + Recibe la Lista de ShopContext y muestra la cantidad de Productos agregados.
+  + Se creó una validación para Verificar si el Producto ya existe en la Lista.
+  + Se creó una Validación para que al agregar 1 producto, la cantidad del Producto elegido no supere el Stock Disponible del mismo.
++ Se Creo el Componente "ShopContext" para mantener el estado de las compras agregadas al carrito
++ ItemDetail:
+  + Se Importó ShopContext y se creo la const "addToList"
+  + Se agregó el evento onClick al boton de "Agregar al Carrito" y llamamos a addToList(info,count) pasándole como Props el Objeto con toda la información y la cantidad a Comprar.
++ CartWidget:
+  + Se Importó ShopContext para acceder a la Lista y cambiar el numero en badgeContent cada vez que se agrega un producto nuevo.
 
+
+# PreEntrega 1 y 2
+# Modificaciones de la Versión
 + Cre creó la Visual del Ecommerce de Productos Tecnológicos
   + Desarrollo del Componente NavBar con 3 categorías Filtreables
       -   Celulares

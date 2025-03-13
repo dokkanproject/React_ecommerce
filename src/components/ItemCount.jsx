@@ -5,21 +5,15 @@ import '../App.css';
 import { useCount } from '../customHooks/useCount';
 import { useEffect } from 'react';
 
-const ItemCount = ({stockDisp}) =>
+const ItemCount = ({stockDisp, count, setCount}) =>
 {
-    let stock = stockDisp;
+    let stock       = stockDisp;
 
-    const { count, sumar, restar } = useCount(1,stock)
-
+    const { sumar, restar } = useCount(count, setCount, stock);
     
     useEffect(() => {
-        console.log("Me estoy Renderizando al montarme/nacer y cada vez que el contador cambia")
+        console.log("Me estoy Renderizando al montarme/nacer y cada vez que el contador cambia "+count)
     },[count])
-    
-    const onAdd = () =>
-    {
-        console.log("Agregando al Carrito la cantidad de "+ count)
-    }
 
     const onInputChange = (numero) => {
         
@@ -41,7 +35,6 @@ const ItemCount = ({stockDisp}) =>
             <Button className='botonesMasMenos' onClick={restar}>-</Button>
             <Input className='ProductInput' type='number' onChange = {(event) => onInputChange(parseInt(event.target.value))} value={count}/>
             <Button className='botonesMasMenos' onClick={sumar}>+</Button>
-            <Button className='BotonComprar' onClick={onAdd} size="small">AGREGAR AL CARRITO</Button>
         </Box>
     )
 }
