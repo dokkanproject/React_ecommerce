@@ -22,9 +22,9 @@ const Cart = () => {
     const TAX_RATE = 0.07;
 
     function ccyFormat(num) {
-        return new Intl.NumberFormat('es-ES', {
+        return new Intl.NumberFormat('es-AR', {
             style: 'currency',
-            currency: 'USD',
+            currency: 'ARS',
             minimumFractionDigits: 3
         }).format(num);
     }
