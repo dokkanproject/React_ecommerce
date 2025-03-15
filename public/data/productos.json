@@ -8,8 +8,8 @@
         "Camara frontal 8 MP",
         "Camara trasera 50 MP + 2 MP"
       ],
-      "precio": "$ 299.999",
-      "descuento": "$ 189.999",
+      "precio": "299.999",
+      "descuento": "189.999",
       "imagen": "/productos/Galaxy_a05.png",
       "stock": 5,
       "ranking": 4
@@ -23,8 +23,8 @@
         "Camara frontal 13.0 MP",
         "Camara trasera 50.0 MP + 5.0 MP"
       ],
-      "precio": "$ 579.999",
-      "descuento": "$ 399.999",
+      "precio": "579.999",
+      "descuento": "399.999",
       "imagen": "/productos/Galaxy_a24Black.png",
       "stock": 3,
       "ranking": 4
@@ -38,8 +38,8 @@
         "Camara frontal 10.0 MP",
         "Camara trasera 50.0 MP + 12.0 MP"
       ],
-      "precio": "$ 3.699.999",
-      "descuento": "$ 2.589.999",
+      "precio": "3.699.999",
+      "descuento": "2.589.999",
       "imagen": "/productos/Galaxy_zFold.png",
       "stock": 10,
       "ranking": 5
@@ -53,8 +53,8 @@
         "Tamaño de pantalla 2000 x 1200",
         "Cámara Frontal 5.0 MP"
       ],
-      "precio": "$ 849.999",
-      "descuento": "$ 500.999",
+      "precio": "849.999",
+      "descuento": "500.999",
       "imagen": "/productos/GalaxyTabS6.png",
       "stock": 7,
       "ranking": 5
@@ -68,8 +68,8 @@
         "Altavoces Custom 1-way",
         "Sonido ambiente - SI"
       ],
-      "precio": "$ 228.999",
-      "descuento": "$ 159.999",
+      "precio": "228.999",
+      "descuento": "159.999",
       "imagen": "/productos/GalaxyBudsFE_Graphite.png",
       "stock": 20,
       "ranking": 4
@@ -83,8 +83,8 @@
         "Versión de Bluetooh - Bluetooth v5.2",
         "Cancelación activa de ruido - SI"
       ],
-      "precio": "$ 228.999",
-      "descuento": "$ 159.999",
+      "precio": "228.999",
+      "descuento": "159.999",
       "imagen": "/productos/GalaxyBuds2Negro.png",
       "stock": 14,
       "ranking": 4

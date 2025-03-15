@@ -47,10 +47,10 @@ const ItemDetail = ({info}) => {
                             />
                         <Rating name="read-only" value={info.ranking} readOnly />
                         <Typography sx={{ color: '#aeaeae', textAlign:'center', textDecoration:'line-through', fontSize:'13px' }}>
-                            {info.precio}
+                            $ {info.precio}
                         </Typography>
                         <Typography sx={{ color: '#1e1e1e', textAlign:'center', fontSize:'16px', fontWeight:'bold' }}>
-                            {info.descuento}
+                            $ {info.descuento}
                         </Typography>
                     </Item>
                 </Grid>

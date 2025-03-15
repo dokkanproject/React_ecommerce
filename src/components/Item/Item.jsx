@@ -49,10 +49,10 @@ const Producto = ({info}) =>
         <ListItemText variant="body2" sx={{ color: 'text.secondary', textAlign:'left' }}>- {info.descripcion[2]}</ListItemText>
         
         <Typography sx={{ color: '#aeaeae', textAlign:'center', textDecoration:'line-through', fontSize:'13px' }}>
-          {info.precio}
+          $ {info.precio}
         </Typography>
         <Typography sx={{ color: '#1e1e1e', textAlign:'center', fontSize:'16px', fontWeight:'bold' }}>
-        {info.descuento}
+        $ {info.descuento}
         </Typography>
       </CardContent>
       
