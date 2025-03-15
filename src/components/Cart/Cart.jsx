@@ -25,7 +25,8 @@ const Cart = () => {
         return new Intl.NumberFormat('es-AR', {
             style: 'currency',
             currency: 'ARS',
-            minimumFractionDigits: 3
+            minimumFractionDigits: 3,
+            maximumFractionDigits: 3
         }).format(num);
     }
 
