@@ -5,11 +5,11 @@ import '../App.css';
 import { useCount } from '../customHooks/useCount';
 import { useEffect } from 'react';
 
-const ItemCount = ({stockDisp, count, setCount}) =>
+const ItemCount = ({itemID, stockDisp, count, setCount}) =>
 {
     let stock       = stockDisp;
-
-    const { sumar, restar } = useCount(count, setCount, stock);
+    
+    const { sumar, restar } = useCount(count, setCount, stock, itemID);
     
     useEffect(() => {
         console.log("Me estoy Renderizando al montarme/nacer y cada vez que el contador cambia "+count)
@@ -23,6 +23,7 @@ const ItemCount = ({stockDisp, count, setCount}) =>
         }
         else if(count < stock)
         {
+            console.log('CAMBIA y Actualizamos '+numero)
             setCount(numero)
         }
         else{

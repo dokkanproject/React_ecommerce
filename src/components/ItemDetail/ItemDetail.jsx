@@ -13,8 +13,11 @@ import ItemCount from '../ItemCount';
 import { useContext } from 'react';
 import { ShopContext } from '../../context/ShopContext';
 import {useState} from 'react';
+import Notification from '../Notification';
 
 const ItemDetail = ({info}) => {
+
+    const [open, setOpen] = useState(false)
 
     const [count, setCount] = useState(1);
 
@@ -32,7 +35,7 @@ const ItemDetail = ({info}) => {
     const {addToList} = useContext(ShopContext)
     
     return(
-
+        <>
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
                 <Grid size={{ xs: 12, md: 4 }}>
@@ -65,12 +68,17 @@ const ItemDetail = ({info}) => {
                         <ListItemText variant="body2" sx={{ color: 'text.secondary', textAlign:'left' }}>- {info.descripcion[2]}</ListItemText>
                     </Item>
                     <CardActions className='botonContainer'>
-                        <ItemCount stockDisp={info.stock} count={count} setCount={setCount}></ItemCount>
-                        <Button className='BotonComprar' onClick={() => addToList(info,count)} size="small">AGREGAR AL CARRITO</Button>
+                        <ItemCount itemID={info.id} stockDisp={info.stock} count={count} setCount={setCount}></ItemCount>
+                        <Button className='BotonComprar' onClick={() => {
+                            addToList(info,count);
+                            setOpen(true);
+                            }} size="small">AGREGAR AL CARRITO</Button>
                     </CardActions>
                 </Grid>
             </Grid>
         </Box>
+        <Notification informacion={info} open={open} setOpen={setOpen} />
+        </>
     )
 }
 

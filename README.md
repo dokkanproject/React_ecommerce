@@ -6,11 +6,18 @@ https://react-ecommerce-eta-opal.vercel.app/
 # Modificaciones de la Versión Para Entrega Final
 + Se Optimizó el CustomHook "useCount"
 + Se Sincronizó el Counter con el ItemDetail
++ Se creó el componente "Notification" que se activa al Agregar un producto al Carrito.
 + Se Creó el Componente "Cart" que contiene el listado de los Productos Agregados
   + Recibe la Lista de ShopContext y muestra la cantidad de Productos agregados.
   + Se creó una validación para Verificar si el Producto ya existe en la Lista.
   + Se creó una Validación para que al agregar 1 producto, la cantidad del Producto elegido no supere el Stock Disponible del mismo.
-+ Se Creo el Componente "ShopContext" para mantener el estado de las compras agregadas al carrito
+  + Se creó el componente ItemCart que contiene la información del Item y se le agregó la funcionalidad ItemCount para que el usuario pueda modificar la cantida a comprar.
+  + Se agregó la funcionalidad para poder elimiar el Producto del listado y sincronizarlo con ShopContext.
++ Se Creo el Componente "ShopContext" para mantener el estado de las compras agregadas al carrito y se crearon las CONST
+  + addToList
+  + removeFromList
+  + clearList
+  + actualizaCantidad
 + ItemDetail:
   + Se Importó ShopContext y se creo la const "addToList"
   + Se agregó el evento onClick al boton de "Agregar al Carrito" y llamamos a addToList(info,count) pasándole como Props el Objeto con toda la información y la cantidad a Comprar.

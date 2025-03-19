@@ -28,8 +28,25 @@ export const ShopComponentContext = ({children}) =>
         }
     }
 
+    const removeFromList = (itemID) =>
+    {
+        setLista(lista.filter((item) => item.id !== itemID));
+    }
+
+    const clearList = () =>
+    {
+        setLista([]);
+    }
+
+    // Actualizamos la cantidad del Item y lo llamamos desde el CustomHook UseCount
+    const actualizaCantidad = (itemID, cantidad) => {
+        setLista(lista.map(item =>
+            item.id === itemID ? { ...item, cantidad } : item
+        ));
+    };
+
     return(
-        <ShopContext.Provider value={{lista,addToList}}>
+        <ShopContext.Provider value={{lista,addToList, removeFromList, clearList, actualizaCantidad}}>
             {children}
         </ShopContext.Provider>
 

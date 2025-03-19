@@ -2,10 +2,10 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid2';
 import Typography from '@mui/material/Typography';
-import CircularProgress from '@mui/material/CircularProgress';
 import Producto from './Item/Item';
 import {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
+import { useLoader } from '../customHooks/useLoader';
 
 const ListadoItems = () => {
 
@@ -13,6 +13,8 @@ const ListadoItems = () => {
   const [isLoading, setLoading] = useState(true)
   const [productos, setProductos] = useState([])
   const [productosFiltrados, setProductosFiltrados] = useState([]);
+  
+  const Loader = useLoader(isLoading, "Cargando productos...")
 
   useEffect(() => {
     const fetchProductos = async () => {
@@ -44,14 +46,7 @@ const ListadoItems = () => {
     }
   }, [categoriaID, productos]); // Se ejecuta cuando cambia la categoría o la lista de productos
 
-  if(isLoading){
-    return (
-      <Box sx={{ flexGrow: 1 }}>
-        <CircularProgress />
-        <Typography sx={{ color: '#000000', textAlign:'center' }}>CARGANDO PRODUCTOS.....</Typography>
-      </Box>
-    )
-  }
+  if (isLoading) return Loader;
 
   return (
     

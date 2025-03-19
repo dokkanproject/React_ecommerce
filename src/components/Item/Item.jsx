@@ -11,8 +11,9 @@ import Rating from '@mui/material/Rating';
 import "./Item.css";
 import { Box, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ShopContext } from '../../context/ShopContext';
+import Notification from '../Notification';
 
 const Producto = ({info}) =>
 {
@@ -20,7 +21,10 @@ const Producto = ({info}) =>
 
   const {addToList} = useContext(ShopContext)
 
+  const [open, setOpen] = useState(false)
+
   return (
+    <>
     <Card className="tarjetaProducto" sx={{ maxWidth: 345, cursor:'pointer'}} onClick={(e) =>{navigate(`/detalle/${info.id}`)}}>
       <Box sx={{background:'#000000', position:'top', height:80, alignContent:'center'}}>
         <Typography sx={{color:'#ffffff'}}>STOCK DISPONIBLE: {info.stock}</Typography>
@@ -28,6 +32,7 @@ const Producto = ({info}) =>
         <Button className='BotonComprar' onClick={(e) => {
           e.stopPropagation();
           addToList(info,1)
+          setOpen(true);
         }} size="small">AGREGAR AL CARRITO</Button>
       </CardActions>
       </Box>
@@ -58,7 +63,8 @@ const Producto = ({info}) =>
       
       </CardActionArea>
     </Card>
-    
+    <Notification informacion={info} open={open} setOpen={setOpen} />
+    </>
   );
 }
 
