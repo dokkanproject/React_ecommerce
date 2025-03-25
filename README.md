@@ -4,6 +4,13 @@
 https://react-ecommerce-eta-opal.vercel.app/
 
 # Modificaciones de la Versión Para Entrega Final
++ Se creó el Componente "CategoryList" y se agregó a la Página de Inicio
+  + Tarjeta que muestra la Imagen de la categoría y su título
++ Pagina de Inicio (ItemListContainer)
+  + Muestra Tarjeta de categorías Navegables
+  + Muestra todos los Productos
++ Se creó la colección "Categorías" en Firebase
+  + En NavBar toma las categorías desde Firebase
 + Se Optimizó el CustomHook "useCount"
 + Se Sincronizó el Counter con el ItemDetail
 + Se creó el componente "Notification" que se activa al Agregar un producto al Carrito.

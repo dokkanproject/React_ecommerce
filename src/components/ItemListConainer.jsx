@@ -9,10 +9,10 @@ import { useLoader } from '../customHooks/useLoader';
 import {getDocs, collection, query, where, limit, getDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase/client';
 
-const ListadoItems = () => {
+const ListadoItems = ({margenTop}) => {
 
   const { categoriaID } = useParams();
-
+  const margen = margenTop
   const [isLoading, setLoading] = useState(true)
   const [productos, setProductos] = useState([])
   const [productosFiltrados, setProductosFiltrados] = useState([]);
@@ -30,7 +30,6 @@ const ListadoItems = () => {
   {
     const data = await getDocs(productosRef)
     const dataFiltrada = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-    console.log(dataFiltrada)
     setProductos(dataFiltrada)
     setLoading(false);
   }
@@ -94,10 +93,10 @@ const ListadoItems = () => {
   if (isLoading) return Loader;
 
   return (
-    
-    <Box sx={{ flexGrow: 1, marginBottom:10 }}>
-      <Typography variant="h4" sx={{ textAlign: "center", mb: 3, color:'#000000',marginTop:15 }}>
-        {categoriaID ? `${categoriaID.toUpperCase()}` : "PRODUCTOS"}
+    <Box sx={{ flexGrow: 1, marginBottom:10, marginTop: margen }}>
+
+      <Typography variant="h4" sx={{ textAlign: "center", mb: 3, color:'#000000' }}>
+        {categoriaID ? `${categoriaID.toUpperCase()}` : "PRODUCTOS DESTACADOS"}
       </Typography>
 
       <Grid className="productoContainer" container spacing={4} columns={16}>

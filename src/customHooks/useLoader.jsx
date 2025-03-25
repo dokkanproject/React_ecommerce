@@ -3,7 +3,7 @@ import { Box, CircularProgress, Typography } from "@mui/material";
 
 export const useLoader = (cargando,mensaje) =>{
 
-    console.log('Cargando '+cargando, 'Mensaje: '+mensaje)
+    //console.log('Cargando '+cargando, 'Mensaje: '+mensaje)
     
     return (
         <Box sx={{ flexGrow: 1, textAlign: "center", mt: 3 }}>

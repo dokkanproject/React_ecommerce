@@ -23,7 +23,7 @@ const NavBar = () => {
   const [categorias, setCategorias] = useState([]);
   
   const navigate = useNavigate()
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
   // Traemos las Categorias desde Firebase
   useEffect(() => {

@@ -12,7 +12,7 @@ const CartWidget = () => {
   const navigate = useNavigate()
 
   const {lista} = useContext(ShopContext)
-  console.log('Cantidad de productos en Carrito: ',lista.length)
+  //console.log('Cantidad de productos en Carrito: ',lista.length)
 
   const StyledBadge = styled(Badge)(({ theme }) => ({
       '& .MuiBadge-badge': {
