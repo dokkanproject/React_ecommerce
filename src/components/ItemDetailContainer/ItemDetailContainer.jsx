@@ -2,28 +2,39 @@ import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import {useFetch} from '../../customHooks/useFetch'
 import ItemDetail from '../ItemDetail/ItemDetail'
-import CircularProgress from '@mui/material/CircularProgress';
-import Typography from '@mui/material/Typography';
-
 import { Box } from '@mui/material';
+import { db } from '../../firebase/client';
+import { doc, getDoc } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { useLoader } from '../../customHooks/useLoader';
 
 const ItemDetailContainer = () =>
 {
     const { productID } = useParams(); // Obtenemos el ID de la URL
-    const { data: productos, loading, error } = useFetch("/data/productos.json");
+    //const { data: productos, loading, error } = useFetch("/data/productos.json");
 
-    if (loading) return(
-        <Box sx={{ flexGrow: 1 }}>
-            <CircularProgress />
-            <Typography sx={{ color: '#000000', textAlign:'center' }}>CARGANDO PRODUCTO.....</Typography>
-      </Box>
-    )
-    if (error) return <p>Error: {error}</p>;
+    const productRef = doc (db, 'products',productID)
+    const [producto, setProducto] = useState([])
+    const [isLoading, setLoading] = useState(true)
+    const Loader = useLoader(isLoading, "Cargando producto...")
 
-    // Buscar el producto por ID
-    const producto = productos.find((p) => p.id === productID);
+    const getProduct = () =>
+    {
+        getDoc(productRef).then((snapshot =>{
+            if(snapshot.exists()){
+                console.log({id: snapshot.id, ...snapshot.data()})
+                setProducto({id: snapshot.id, ...snapshot.data()})
+                setLoading(false);
+            }
+        })
+        )
+    }
 
-    if (!producto) return <p>Producto no encontrado</p>;
+    useEffect(() =>{
+        getProduct()
+    }, [])
+
+    if (isLoading) return Loader;
 
     return (
         <Box>

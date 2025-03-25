@@ -32,7 +32,7 @@ const ItemCount = ({itemID, stockDisp, count, setCount}) =>
     }
         
     return (
-        <Box>
+        <Box component="section" sx={{ p: 2, border: '1px solid grey', borderRadius: 5, textAlign:'center' }}>
             <Button className='botonesMasMenos' onClick={restar}>-</Button>
             <Input className='ProductInput' type='number' onChange = {(event) => onInputChange(parseInt(event.target.value))} value={count}/>
             <Button className='botonesMasMenos' onClick={sumar}>+</Button>

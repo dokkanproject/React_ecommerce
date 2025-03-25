@@ -25,21 +25,14 @@ const Producto = ({info}) =>
 
   return (
     <>
-    <Card className="tarjetaProducto" sx={{ maxWidth: 345, cursor:'pointer'}} onClick={(e) =>{navigate(`/detalle/${info.id}`)}}>
-      <Box sx={{background:'#000000', position:'top', height:80, alignContent:'center'}}>
+    <Card className="tarjetaProducto" sx={{ maxWidth: 345, width: 345, cursor:'pointer'}} onClick={(e) =>{navigate(`/detalle/${info.id}`)}}>
+      <Box sx={{background:'#000000', position:'top', height:40, alignContent:'center'}}>
         <Typography sx={{color:'#ffffff'}}>STOCK DISPONIBLE: {info.stock}</Typography>
-        <CardActions className='botonContainer'>
-        <Button className='BotonComprar' onClick={(e) => {
-          e.stopPropagation();
-          addToList(info,1)
-          setOpen(true);
-        }} size="small">AGREGAR AL CARRITO</Button>
-      </CardActions>
       </Box>
       
       <CardActionArea>
       <CardMedia
-        sx={{ height: 250 }}
+        sx={{ maxHeight: 250, width: "100%", height: 250, objectFit: "contain" }}
         image={info.imagen}
         title={info.name}
       />
@@ -62,7 +55,17 @@ const Producto = ({info}) =>
       </CardContent>
       
       </CardActionArea>
+      <Box sx={{background:'#000000', position:'bottom', height:60, alignContent:'center'}}>
+        <CardActions className='botonContainer'>
+          <Button className='BotonComprar' onClick={(e) => {
+            e.stopPropagation();
+            addToList(info,1)
+            setOpen(true);
+          }} size="small">AGREGAR AL CARRITO</Button>
+      </CardActions>
+      </Box>
     </Card>
+
     <Notification informacion={info} open={open} setOpen={setOpen} />
     </>
   );

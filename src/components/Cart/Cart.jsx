@@ -67,7 +67,7 @@ const Cart = () => {
             </TableHead>
             <TableBody>
             {lista.map((row, index) => (
-                <ItemCart item={row} indice={index}/>
+                <ItemCart item={row} indice={row.id}/>
               ))}
               <TableRow>
                 <TableCell rowSpan={3} />

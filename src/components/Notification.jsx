@@ -23,7 +23,7 @@ export default function Notification({ informacion, open, setOpen }) {
       open={open}
       autoHideDuration={3000}
       onClose={handleClose}
-      message={`Se agregó ${informacion.name} al carrito`}
+      message={`Se agregó ${informacion?.name} al carrito`}
     />
   );
 }

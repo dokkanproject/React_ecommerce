@@ -6,16 +6,58 @@ import Producto from './Item/Item';
 import {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { useLoader } from '../customHooks/useLoader';
+import {getDocs, collection, query, where, limit, getDoc, doc } from 'firebase/firestore'
+import { db } from '../firebase/client';
 
 const ListadoItems = () => {
 
   const { categoriaID } = useParams();
+
   const [isLoading, setLoading] = useState(true)
   const [productos, setProductos] = useState([])
   const [productosFiltrados, setProductosFiltrados] = useState([]);
   
   const Loader = useLoader(isLoading, "Cargando productos...")
 
+  // Llamamos a nuestra DB en Firebase
+  const productosRef = query(collection(db,'products'))
+
+  const productosFilterRef = categoriaID
+    ? query(collection(db, 'products'), where("category", "==", categoriaID))
+    : null;
+
+  const getProducts = async () =>
+  {
+    const data = await getDocs(productosRef)
+    const dataFiltrada = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+    console.log(dataFiltrada)
+    setProductos(dataFiltrada)
+    setLoading(false);
+  }
+  
+  const getCategoryProducts = async () =>
+  {
+    if (!productosFilterRef) return;
+
+    const dataCategory = await getDocs(productosFilterRef)
+    const categoriaFiltrada = dataCategory.docs.map((doc) => ({...doc.data(), id: doc.id}))
+    console.log(`Categoria Filtrada (${categoriaID}): `, categoriaFiltrada);
+    setProductosFiltrados(categoriaFiltrada)
+    setLoading(false);
+  }
+
+
+  useEffect(() => {
+    setLoading(true);
+
+    if (categoriaID) {
+      getCategoryProducts()
+    } else {
+      getProducts()
+    }
+  }, [categoriaID])
+
+/* Usamos Fetch para levantar la data de forma local. (Habilitar solo para TEST en Localhost)
   useEffect(() => {
     const fetchProductos = async () => {
       try {
@@ -37,34 +79,49 @@ const ListadoItems = () => {
     fetchProductos();
   }, []);
 
+  */
+
   // Filtramos los productos cuando cambia la categoría
+  /*
   useEffect(() => {
     if (categoriaID) {
-      setProductosFiltrados(productos.filter(p => p.category === categoriaID));
+      getCategoryProducts()
     } else {
       setProductosFiltrados(productos);
     }
   }, [categoriaID, productos]); // Se ejecuta cuando cambia la categoría o la lista de productos
-
+  */
   if (isLoading) return Loader;
 
   return (
     
-    <Box sx={{ flexGrow: 1 }}>
-     <Grid className="productoContainer" container spacing={4} columns={16}>
-        {productosFiltrados.length > 0 ? (
-          productosFiltrados.map((producto) => (
+    <Box sx={{ flexGrow: 1, marginBottom:10 }}>
+      <Typography variant="h4" sx={{ textAlign: "center", mb: 3, color:'#000000',marginTop:15 }}>
+        {categoriaID ? `${categoriaID.toUpperCase()}` : "PRODUCTOS"}
+      </Typography>
+
+      <Grid className="productoContainer" container spacing={4} columns={16}>
+        {categoriaID ? (
+          productosFiltrados.length > 0 ? (
+            productosFiltrados.map((producto) => (
+              <Grid key={producto.id} xs={8}>
+                <Producto info={producto} />
+              </Grid>
+            ))
+          ) : (
+            <Typography sx={{ color: "#000000", textAlign: "center" }}>
+              No hay productos en esta categoría.
+            </Typography>
+          )
+        ) : (
+          productos.map((producto) => (
             <Grid key={producto.id} xs={8}>
               <Producto info={producto} />
             </Grid>
           ))
-        ) : (
-          <Typography sx={{ color: "#000000", textAlign: "center" }}>
-            No hay productos en esta categoría.
-          </Typography>
         )}
       </Grid>
-    </Box>
+  </Box>
   );
 }
 

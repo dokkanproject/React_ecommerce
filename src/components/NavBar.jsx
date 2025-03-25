@@ -10,31 +10,48 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
 import CartWidget from './CartWidget';
+import { useState, useEffect } from "react";
+import { getDocs, collection, getDoc } from "firebase/firestore";
+import { db } from '../firebase/client';
 
-const categorias = ['Celulares', 'Tablets', 'Buds'];
+//const categorias = ['Celulares', 'Tablets', 'Buds'];
 
 const NavBar = () => {
 
+  const [categorias, setCategorias] = useState([]);
+  
   const navigate = useNavigate()
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
+  // Traemos las Categorias desde Firebase
+  useEffect(() => {
+    const getCategories = async () => {
+      const categoriasRef = collection(db, "category");
+      const querySnapshot = await getDocs(categoriasRef);
+      const categoriasArray = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        name: doc.data().name,
+      }));
+      setCategorias(categoriasArray);
     };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
+    getCategories();
+  }, []);
 
-    return (
-        <AppBar position="fixed" sx={{backgroundColor:'#eeeeee'}}>
-            <Container maxWidth="xl">
-            <Toolbar className='toolbar'>
+  const handleOpenNavMenu = (event) => {
+      setAnchorElNav(event.currentTarget);
+  };
 
+  const handleCloseNavMenu = () => {
+      setAnchorElNav(null);
+  };
+
+  return (
+    <AppBar position="fixed" sx={{backgroundColor:'#eeeeee'}}>
+      <Container maxWidth="xl">
+        <Toolbar className='toolbar'>
           <Typography
             variant="h6"
             noWrap
@@ -53,7 +70,6 @@ const NavBar = () => {
           >
           TECH FUSION
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -82,17 +98,17 @@ const NavBar = () => {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {categorias.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography className={({ isActive }) => (isActive ? "activeLink" : "inactiveLink")} sx={{ textAlign: 'center' }} onClick={() => navigate(`categorias/${page}`)}>
-                    {page}
+                <MenuItem key={page.id} onClick={handleCloseNavMenu}>
+                  <Typography className={({ isActive }) => (isActive ? "activeLink" : "inactiveLink")} sx={{ textAlign: 'center' }} onClick={() => navigate(`categorias/${page.name}`)}>
+                    {page.name}
                   </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-            <IconButton className="icono">
-                <Avatar alt="Massimo" className='avatar' src="/logo_techFusion.png" />
-            </IconButton>
+          <IconButton className="icono">
+              <Avatar alt="Massimo" className='avatar' src="/logo_techFusion.png" />
+          </IconButton>
           <Typography
             variant="h5"
             noWrap
@@ -115,23 +131,23 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {categorias.map((page) => (
               <Button
-                key={page}
+                key={page.id}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block', color:'#101010' }}
               >
-                <Typography className={({ isActive }) => (isActive ? "activeLink" : "inactiveLink")}  sx={{ textAlign: 'center' }} onClick={() => navigate(`categorias/${page}`)}>
-                {page}
+                <Typography className={({ isActive }) => (isActive ? "activeLink" : "inactiveLink")}  sx={{ textAlign: 'center' }} onClick={() => navigate(`categorias/${page.name}`)}>
+                {page.name}
                 </Typography>
               </Button>
             ))}
           </Box>
           <Box sx={{ flexGrow: 1 }}>
             <CartWidget/>
-        </Box>
-            </Toolbar>
-            </Container>
-        </AppBar>
-    )
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  )
 }
 
 
