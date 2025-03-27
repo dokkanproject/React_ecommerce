@@ -10,14 +10,13 @@ import { useNavigate } from 'react-router-dom';
 import {getDocs, collection, query, where, limit, getDoc, doc } from 'firebase/firestore'
 import { db } from '../../firebase/client';
 import ListadoItems from '../ItemListConainer';
-
-
+import SliderContainer
+ from '../Slider/SliderContainer';
 const ListadoCategorias = () => {
 
     const [categorias, setCategorias] = useState([]);
   
   const navigate = useNavigate()
-  const [anchorElNav, setAnchorElNav] = useState(null);
 
   // Traemos las Categorias desde Firebase
   useEffect(() => {
@@ -38,6 +37,7 @@ const ListadoCategorias = () => {
 
     return (
         <Box sx={{ flexGrow: 1 , marginTop: 15}}>
+            <SliderContainer/>
             <Grid className="productoContainer" container spacing={4} columns={16}>
                 {categorias.map((page) => (
                     <Grid key={page.id} xs={8}>

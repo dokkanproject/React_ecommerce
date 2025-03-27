@@ -9,6 +9,11 @@ import Paper from '@mui/material/Paper';
 import { useContext } from 'react';
 import { ShopContext } from '../../context/ShopContext';
 import ItemCart from './ItemCart';
+import Button from '@mui/material/Button';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../../firebase/client';
+import TextField from '@mui/material/TextField';
+import { useState } from "react";
 
 const Cart = () => {
     
@@ -37,6 +42,43 @@ const Cart = () => {
 
     console.log('Items en el Carrito '+lista.length)
 
+    // CREAMOS LA ORDEN DE COMPRA
+
+    const [formData, setFormData] = useState({
+      nombre: "",
+      telefono: "",
+      email: "",
+    });
+
+    const handleChange = (name, e) => {
+      setFormData({...formData,[name]: e,});
+    };
+
+    const createOrder = ({buyerInfo}) => {
+
+      console.log("Datos del usuario:", formData);
+
+      const order = {
+        buyer:
+        {
+          name: formData.nombre,
+          telefono: formData.telefono,
+          email: formData.email
+        },
+        items: lista.map((item) => ({
+          id:item.id,
+          title:item.name,
+          quantity:item.cantidad,
+          price:item.precio
+        })),
+        total:ccyFormat(invoiceTotal)
+      }
+
+      const orderCollection = collection(db,'orders')
+      
+      addDoc(orderCollection, order).then(({id}) => console.log(id))
+    }
+
     if(lista.length == 0)
     {
         return(
@@ -54,7 +96,7 @@ const Cart = () => {
     }else{
         return(
         
-            <TableContainer component={Paper}>
+          <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="spanning table">
             <TableHead>
               <TableRow>
@@ -88,6 +130,12 @@ const Cart = () => {
               </TableRow>
             </TableBody>
           </Table>
+
+          <TextField id="nombre" label="Nombre y Apellido" variant="outlined" onChange={(event) => handleChange(event.target.id, event.target.value)}/>
+          <TextField id="telefono" label="Teléfono" variant="outlined" onChange={(event) => handleChange(event.target.id, event.target.value)}/>
+          <TextField id="email" label="Email" variant="outlined" onChange={(event) => handleChange(event.target.id, event.target.value)} />
+          <Button variant="outlined" onClick={createOrder}>FINALIZAR COMPRA</Button>
+          
         </TableContainer>
         )
     }

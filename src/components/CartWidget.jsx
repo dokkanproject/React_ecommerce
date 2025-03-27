@@ -23,9 +23,9 @@ const CartWidget = () => {
 
   return (
       <IconButton aria-label="cart">
-      <StyledBadge badgeContent={lista.length} color="primary" onClick={() => navigate(`cart/`)}>
-          <ShoppingCartOutlinedIcon className='cartIcon' />
-      </StyledBadge>
+          <StyledBadge badgeContent={lista.length} color="primary" onClick={() => navigate(`cart/`)} >
+              <ShoppingCartOutlinedIcon className='cartIcon' />
+          </StyledBadge>
       </IconButton>
   )
 }

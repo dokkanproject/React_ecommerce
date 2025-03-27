@@ -21,21 +21,26 @@ const ItemCount = ({itemID, stockDisp, count, setCount}) =>
         {
             console.log("TIRO NAN")
         }
-        else if(count < stock)
+        if(count < stock)
         {
             console.log('CAMBIA y Actualizamos '+numero)
             setCount(numero)
         }
-        else{
+        if(numero <= 0)
+        {
+            setCount(1)
+        }
+        if(numero > stock)
+        {
             setCount(stock)
         }
     }
-        
+
     return (
-        <Box component="section" sx={{ p: 2, border: '1px solid grey', borderRadius: 5, textAlign:'center' }}>
-            <Button className='botonesMasMenos' onClick={restar}>-</Button>
+        <Box component="section" className='countContainer' sx={{ p: 2, borderRadius: 5, textAlign:'center', width:'fit-content' }}>
+            <Button className='botonMasMenos' onClick={restar}>-</Button>
             <Input className='ProductInput' type='number' onChange = {(event) => onInputChange(parseInt(event.target.value))} value={count}/>
-            <Button className='botonesMasMenos' onClick={sumar}>+</Button>
+            <Button className='botonMasMenos' onClick={sumar}>+</Button>
         </Box>
     )
 }

@@ -45,13 +45,18 @@
 
 .ProductInput{
   color: white;
-  border: 2px solid #8707ff;
   border-radius: 8px;
   padding: 10px;
   background: transparent;
-  max-width: 80px;
+  max-width: 60px;
   height: 30px;
   text-align: center !important;
+}
+
+.ProductInput:disabled {
+  border-color: rgba(118, 118, 118, 0.3);
+  background: transparent !important;
+  color: #000000 !important;
 }
 
 .css-1yrc8ca-MuiInputBase-input-MuiInput-input{
@@ -115,4 +120,26 @@
 }
 .inactiveLink{
   color: #1c1c1c;
+}
+
+.botonMasMenos
+{
+  background-color: transparent !important;
+  font-weight: bold !important;
+  font-size: 20px !important;
+  color: #000000 !important;
+  padding: 1px !important;
+  min-width: 40px !important;
+  border-radius: 20px !important;
+}
+.botonMasMenos:focus, .botonMasMenos:focus-visible {
+  outline: 0px auto !important;
+}
+
+.countContainer
+{
+  border: 1px solid grey !important;
+  background-color: #ffffff !important;
+  padding: 5px !important;
+  border-radius: 50%x !important;
 }

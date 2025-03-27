@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import {useFetch} from '../../customHooks/useFetch'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { Box } from '@mui/material';
 import { db } from '../../firebase/client';
@@ -11,7 +10,6 @@ import { useLoader } from '../../customHooks/useLoader';
 const ItemDetailContainer = () =>
 {
     const { productID } = useParams(); // Obtenemos el ID de la URL
-    //const { data: productos, loading, error } = useFetch("/data/productos.json");
 
     const productRef = doc (db, 'products',productID)
     const [producto, setProducto] = useState([])

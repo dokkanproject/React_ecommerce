@@ -1,0 +1,14 @@
+[
+  {
+    "imgURL": "/productos/slide_1.jpg",
+    "imgAlt": "img-1"
+  },
+  {
+    "imgURL": "/productos/slide_2.jpg",
+    "imgAlt": "img-2"
+  },
+  {
+    "imgURL": "/productos/slide_3.jpg",
+    "imgAlt": "img-3"
+  }
+]

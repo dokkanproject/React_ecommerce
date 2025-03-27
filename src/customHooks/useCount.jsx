@@ -18,6 +18,10 @@ export const useCount = (count, setCount, stock, idItem) => {
             setCount(count + 1)
             actualizaCantidad(idItem, count + 1)
         }
+        if(count > stock){
+            setCount(stock)
+            actualizaCantidad(idItem, stock)
+        }
         
     }
 
