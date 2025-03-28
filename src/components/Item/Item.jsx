@@ -1,18 +1,11 @@
 
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import CardActionArea from '@mui/material/CardActionArea';
-import Typography from '@mui/material/Typography';
-import ListItemText from '@mui/material/ListItemText';
-import Rating from '@mui/material/Rating';
-import "./Item.css";
+import {Card, CardActions, CardContent, CardMedia, CardActionArea, Typography, ListItemText, Rating } from '@mui/material';
 import { Box, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { ShopContext } from '../../context/ShopContext';
+import "./Item.css";
 import Notification from '../Notification';
 
 const Producto = ({info}) =>

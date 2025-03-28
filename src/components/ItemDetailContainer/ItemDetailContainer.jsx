@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import ItemDetail from '../ItemDetail/ItemDetail'
 import { Box } from '@mui/material';
 import { db } from '../../firebase/client';
 import { doc, getDoc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useLoader } from '../../customHooks/useLoader';
+import ItemDetail from '../ItemDetail/ItemDetail'
 
 const ItemDetailContainer = () =>
 {

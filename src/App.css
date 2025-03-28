@@ -51,6 +51,22 @@
   max-width: 60px;
   height: 30px;
   text-align: center !important;
+  border-bottom: 0px solid rgba(0, 0, 0, 0) !important;
+}
+.ProductInput::-webkit-outer-spin-button, .ProductInput::-webkit-inner-spin-button{
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  height: 40px !important;
+}
+
+.ProductInput::before{
+  border-bottom: 0px solid rgba(0, 0, 0, 0) !important;
 }
 
 .ProductInput:disabled {
@@ -140,6 +156,12 @@
 {
   border: 1px solid grey !important;
   background-color: #ffffff !important;
-  padding: 5px !important;
+  padding: 1px !important;
   border-radius: 50%x !important;
+}
+
+.ListaCarrito{
+  margin: auto !important;
+  margin-top: 10% !important;
+  margin-bottom: 10% !important;
 }

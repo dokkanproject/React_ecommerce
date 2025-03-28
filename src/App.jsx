@@ -1,6 +1,6 @@
 import './App.css';
 import NavBar from './components/NavBar';
-import ListadoItems from './components/ItemListConainer';
+import ListadoItems from './components/ItemListContainer/ItemListConainer';
 import ListadoCategorias from './components/CategoryList/CategoryList';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { Box } from '@mui/material';

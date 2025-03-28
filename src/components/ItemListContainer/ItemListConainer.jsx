@@ -1,13 +1,10 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid2';
-import Typography from '@mui/material/Typography';
-import Producto from './Item/Item';
 import {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
-import { useLoader } from '../customHooks/useLoader';
+import { useLoader } from '../../customHooks/useLoader';
 import {getDocs, collection, query, where, limit, getDoc, doc } from 'firebase/firestore'
-import { db } from '../firebase/client';
+import { db } from '../../firebase/client';
+import ItemList from '../ItemList/ItemList';
 
 const ListadoItems = ({margenTop}) => {
 
@@ -22,10 +19,12 @@ const ListadoItems = ({margenTop}) => {
   // Llamamos a nuestra DB en Firebase
   const productosRef = query(collection(db,'products'))
 
+  // Filtramos los Productos por Categoria
   const productosFilterRef = categoriaID
     ? query(collection(db, 'products'), where("category", "==", categoriaID))
     : null;
 
+  // Traemos todos los Productos
   const getProducts = async () =>
   {
     const data = await getDocs(productosRef)
@@ -34,6 +33,7 @@ const ListadoItems = ({margenTop}) => {
     setLoading(false);
   }
   
+  // Traemos los Productos Filtrados por Categoría
   const getCategoryProducts = async () =>
   {
     if (!productosFilterRef) return;
@@ -90,37 +90,11 @@ const ListadoItems = ({margenTop}) => {
     }
   }, [categoriaID, productos]); // Se ejecuta cuando cambia la categoría o la lista de productos
   */
+ 
   if (isLoading) return Loader;
 
   return (
-    <Box sx={{ flexGrow: 1, marginBottom:10, marginTop: margen }}>
-
-      <Typography variant="h4" sx={{ textAlign: "center", mb: 3, color:'#000000' }}>
-        {categoriaID ? `${categoriaID.toUpperCase()}` : "PRODUCTOS DESTACADOS"}
-      </Typography>
-
-      <Grid className="productoContainer" container spacing={4} columns={16}>
-        {categoriaID ? (
-          productosFiltrados.length > 0 ? (
-            productosFiltrados.map((producto) => (
-              <Grid key={producto.id} xs={8}>
-                <Producto info={producto} />
-              </Grid>
-            ))
-          ) : (
-            <Typography sx={{ color: "#000000", textAlign: "center" }}>
-              No hay productos en esta categoría.
-            </Typography>
-          )
-        ) : (
-          productos.map((producto) => (
-            <Grid key={producto.id} xs={8}>
-              <Producto info={producto} />
-            </Grid>
-          ))
-        )}
-      </Grid>
-  </Box>
+    <ItemList productos={productos} categoriaID={categoriaID} margen={margen} productosFiltrados={productosFiltrados}/>
   );
 }
 

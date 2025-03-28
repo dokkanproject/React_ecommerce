@@ -1,9 +1,8 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import { Box, Input } from '@mui/material';
-import '../App.css';
+import { Box, Input, Button } from '@mui/material';
 import { useCount } from '../customHooks/useCount';
 import { useEffect } from 'react';
+import '../App.css';
 
 const ItemCount = ({itemID, stockDisp, count, setCount}) =>
 {
@@ -39,7 +38,7 @@ const ItemCount = ({itemID, stockDisp, count, setCount}) =>
     return (
         <Box component="section" className='countContainer' sx={{ p: 2, borderRadius: 5, textAlign:'center', width:'fit-content' }}>
             <Button className='botonMasMenos' onClick={restar}>-</Button>
-            <Input className='ProductInput' type='number' onChange = {(event) => onInputChange(parseInt(event.target.value))} value={count}/>
+            <Input sx={{borderBottom:0}} className='ProductInput' type='number' onChange = {(event) => onInputChange(parseInt(event.target.value))} value={count}/>
             <Button className='botonMasMenos' onClick={sumar}>+</Button>
         </Box>
     )

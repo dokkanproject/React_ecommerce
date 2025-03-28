@@ -1,24 +1,27 @@
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import {Container, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Modal, Box, Paper, Typography} from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useContext } from 'react';
 import { ShopContext } from '../../context/ShopContext';
-import ItemCart from './ItemCart';
-import Button from '@mui/material/Button';
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../../firebase/client';
-import TextField from '@mui/material/TextField';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import ItemCart from './ItemCart';
+import OrderForm from './OrderForm';
 
 const Cart = () => {
     
+    const navigate = useNavigate()
     const {lista} = useContext(ShopContext)
+    const {clearList} = useContext(ShopContext)
+
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    
     console.log('Mi Lista es: ', lista)
+
+    let precioTotal = 0;
 
     // Constantes desde Material
     const TAX_RATE = 0.21;
@@ -42,75 +45,31 @@ const Cart = () => {
 
     console.log('Items en el Carrito '+lista.length)
 
-    // CREAMOS LA ORDEN DE COMPRA
-
-    const [formData, setFormData] = useState({
-      nombre: "",
-      telefono: "",
-      email: "",
-    });
-
-    const handleChange = (name, e) => {
-      setFormData({...formData,[name]: e,});
-    };
-
-    const createOrder = ({buyerInfo}) => {
-
-      console.log("Datos del usuario:", formData);
-
-      const order = {
-        buyer:
-        {
-          name: formData.nombre,
-          telefono: formData.telefono,
-          email: formData.email
-        },
-        items: lista.map((item) => ({
-          id:item.id,
-          title:item.name,
-          quantity:item.cantidad,
-          price:item.precio
-        })),
-        total:ccyFormat(invoiceTotal)
-      }
-
-      const orderCollection = collection(db,'orders')
-      
-      addDoc(orderCollection, order).then(({id}) => console.log(id))
-    }
-
     if(lista.length == 0)
     {
         return(
-            
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 700 }} aria-label="spanning table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell align="center">NO HAY PRODUCTOS EN EL CARRITO</TableCell>
-                        </TableRow>
-                    </TableHead>
-                </Table>
-            </TableContainer>
+          <Container>
+            <Typography sx={{color:'#000000', fontWeight:'bold', textAlign:'center'}}>NO HAY PRODUCTOS EN EL CARRITO</Typography>
+            <Button className='BotonComprar' sx={{marginTop:5}} variant="outlined" onClick={() => navigate('/')}>VOLVER AL INICIO</Button>
+          </Container>
         )
     }else{
         return(
-        
-          <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 700 }} aria-label="spanning table">
+          <TableContainer className='ListaCarrito' component={Paper} sx={{marginTop:10, marginBottom:70, maxWidth:800}}>
+          <Table aria-label="spanning table">
             <TableHead>
               <TableRow>
                 <TableCell></TableCell>
                 <TableCell>Desc</TableCell>
-                <TableCell align="right">CANT</TableCell>
+                <TableCell align="center">CANT</TableCell>
                 <TableCell align="right">PRECIO</TableCell>
                 <TableCell align="right">SUMA</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
             {lista.map((row, index) => (
-                <ItemCart item={row} indice={row.id}/>
-              ))}
+                <ItemCart key={row.id} item={row} indice={row.id}/>
+            ))}
               <TableRow>
                 <TableCell rowSpan={3} />
                 <TableCell></TableCell>
@@ -131,11 +90,15 @@ const Cart = () => {
             </TableBody>
           </Table>
 
-          <TextField id="nombre" label="Nombre y Apellido" variant="outlined" onChange={(event) => handleChange(event.target.id, event.target.value)}/>
-          <TextField id="telefono" label="Teléfono" variant="outlined" onChange={(event) => handleChange(event.target.id, event.target.value)}/>
-          <TextField id="email" label="Email" variant="outlined" onChange={(event) => handleChange(event.target.id, event.target.value)} />
-          <Button variant="outlined" onClick={createOrder}>FINALIZAR COMPRA</Button>
-          
+          <Container>
+            <Button sx={{margin:1}} className='BotonComprar' variant="outlined" startIcon={<DeleteIcon />} onClick={clearList}>LIMPIAR CARRITO</Button>
+            <Button sx={{margin:1}} className='BotonComprar' variant="outlined" onClick={handleOpen}>FINALIZAR COMPRA</Button>
+          </Container>
+          <Modal open={open} onClose={handleClose}>
+              <Box sx={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: 400, bgcolor: "background.paper", boxShadow: 24, p: 4 }}>
+                  <OrderForm lista={lista} precioTotal={ccyFormat(invoiceTotal)} closeForm={handleClose} />
+              </Box>
+          </Modal>
         </TableContainer>
         )
     }

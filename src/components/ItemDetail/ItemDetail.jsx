@@ -1,19 +1,11 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import CardMedia from '@mui/material/CardMedia';
-import Rating from '@mui/material/Rating';
-import ListItemText from '@mui/material/ListItemText';
-
-import { styled } from '@mui/material/styles';
-import { Box, Button } from '@mui/material';
-import Paper from '@mui/material/Paper';
+import { Box, Button, Typography, CardMedia, Rating, ListItemText, styled, Paper, CardActions } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import CardActions from '@mui/material/CardActions';
-import ItemCount from '../ItemCount';
 import { useContext } from 'react';
 import { ShopContext } from '../../context/ShopContext';
 import {useState} from 'react';
 import Notification from '../Notification';
+import ItemCount from '../ItemCount';
 
 const ItemDetail = ({info}) => {
 
@@ -32,7 +24,10 @@ const ItemDetail = ({info}) => {
         }),
     }));
 
-    const {addToList} = useContext(ShopContext)
+    const {lista, addToList} = useContext(ShopContext)
+
+    // Verificamos si el producto ya está en el carrito
+    const isInCart = (id) => lista.some(item => item.id === id);
     
     return(
         <>

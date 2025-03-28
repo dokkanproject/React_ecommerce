@@ -6,6 +6,15 @@ export const ShopComponentContext = ({children}) =>
 {
     const [lista, setLista] = useState([])
 
+    //Contamos la CANT de Items Agregados
+    const handleCount = () => {
+        let contador = 0
+        lista.forEach((item) => {
+            contador += item.cantidad
+        })
+        return contador
+    }
+
     const addToList = (item,cantidad) =>
     {
         console.log('Desde CONTEXT '+item.name+' cantidad '+cantidad)
@@ -16,7 +25,9 @@ export const ShopComponentContext = ({children}) =>
         if (index !== -1) {
             // Si ya está en la lista, sólo actualizamos la cantidad y chequeamos que no se pase del STOCK
             const nuevaLista = [...lista];
+
             console.log('CANTIDAD En CARRITO '+nuevaLista[index].cantidad+' CANT COLOCADA '+cantidad+' STOCK de '+item.stock)
+
             if(nuevaLista[index].cantidad < item.stock)
             {
                 nuevaLista[index].cantidad += cantidad;
@@ -46,7 +57,7 @@ export const ShopComponentContext = ({children}) =>
     };
 
     return(
-        <ShopContext.Provider value={{lista,addToList, removeFromList, clearList, actualizaCantidad}}>
+        <ShopContext.Provider value={{lista, addToList, removeFromList, clearList, actualizaCantidad, handleCount}}>
             {children}
         </ShopContext.Provider>
 

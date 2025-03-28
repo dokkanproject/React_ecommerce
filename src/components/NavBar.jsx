@@ -1,22 +1,12 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Button, Avatar} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import Avatar from '@mui/material/Avatar';
 import { useNavigate } from 'react-router-dom';
-import CartWidget from './CartWidget';
 import { useState, useEffect } from "react";
 import { getDocs, collection, getDoc } from "firebase/firestore";
 import { db } from '../firebase/client';
-
-//const categorias = ['Celulares', 'Tablets', 'Buds'];
+import CartWidget from './CartWidget';
 
 const NavBar = () => {
 
@@ -52,17 +42,13 @@ const NavBar = () => {
     <AppBar position="fixed" sx={{backgroundColor:'#eeeeee'}}>
       <Container maxWidth="xl">
         <Toolbar className='toolbar'>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
+          <Typography variant="h6" noWrap component="a"
             onClick={() => navigate('/')}
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
+              fontWeight: 600,
               color: '#101010',
               textDecoration: 'none',
               cursor:'pointer',
@@ -81,9 +67,7 @@ const NavBar = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
+            <Menu id="menu-appbar" anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'left',
@@ -107,33 +91,15 @@ const NavBar = () => {
             </Menu>
           </Box>
           <IconButton className="icono">
-              <Avatar alt="Massimo" className='avatar' src="/logo_techFusion.png" />
+              <Avatar alt="Massimo" className='avatar'sx={{textAlign:'left', alignContent:screenLeft}} src="/logo_techFusion.png" onClick={() => navigate('/')}/>
           </IconButton>
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            onClick={() => navigate('/')}
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 50,
-              letterSpacing: '.2rem',
-              color: '#101010',
-              textDecoration: 'none',
-              cursor:'pointer',
-            }}
-          >
-            TECH FUSION
-          </Typography>
+          
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {categorias.map((page) => (
               <Button
                 key={page.id}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block', color:'#101010' }}
+                sx={{ my: 2, display: 'block', color:'#101010' }}
               >
                 <Typography className={({ isActive }) => (isActive ? "activeLink" : "inactiveLink")}  sx={{ textAlign: 'center' }} onClick={() => navigate(`categorias/${page.name}`)}>
                 {page.name}
