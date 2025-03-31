@@ -4,6 +4,14 @@
 https://react-ecommerce-eta-opal.vercel.app/
 
 # Modificaciones de la Versión Para Entrega Final
++ Se creó el Formulario de compra (Nombre, Telefono, Email).
+    + El Componente es: OrderForm.
+    + Al Realizar la compra
+        + Mostramos Mensaje de "PROCESANDO COMPRA"
+        + Si guarda OK en Firebase, mostramos el ID de dicha Compra con un Mensaje y un Boton de "CONTINUAR".
+          + "BOTON CONTINUAR" Limpia el CArrito y cierra el Formulario.
+        + Se creó el método "updateStock" que actualiza el stock de los productos en la base de datos después de una compra.
+        + Se Optimizó Item.jsx para que muestre un texto si el Stock se Agota; de lo contrario, muestra el Boton "Agregar al Carrito".
 + Se creó el Componente "CategoryList" y se agregó a la Página de Inicio
   + Tarjeta que muestra la Imagen de la categoría y su título
 + Pagina de Inicio (ItemListContainer)
