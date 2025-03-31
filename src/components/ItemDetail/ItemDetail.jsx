@@ -64,10 +64,16 @@ const ItemDetail = ({info}) => {
                     </Item>
                     <CardActions className='botonContainer'>
                         <ItemCount itemID={info.id} stockDisp={info.stock} count={count} setCount={setCount}></ItemCount>
+                        {info.stock === 0 ? (
+                            <Typography sx={{ color: '#ff0000', fontWeight: 'bold', textAlign: 'center' }}>
+                                ¡NO HAY STOCK DISPONIBLE!
+                            </Typography>
+                            ) : (
                         <Button className='BotonComprar' onClick={() => {
                             addToList(info,count);
                             setOpen(true);
                             }} size="small">AGREGAR AL CARRITO</Button>
+                        )}
                     </CardActions>
                 </Grid>
             </Grid>
