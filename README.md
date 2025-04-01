@@ -4,8 +4,7 @@
 https://react-ecommerce-eta-opal.vercel.app/
 
 # Modificaciones de la Versión Para Entrega Final
-+ Se creó el Formulario de compra (Nombre, Telefono, Email).
-    + El Componente es: OrderForm.
++ Se creó el Componente OrderForm.
     + Al Realizar la compra
         + Mostramos Mensaje de "PROCESANDO COMPRA"
         + Si guarda OK en Firebase, mostramos el ID de dicha Compra con un Mensaje y un Boton de "CONTINUAR".
