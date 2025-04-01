@@ -1,4 +1,4 @@
-# Entrega Final 2 - Massimo Gagliardi
+# Entrega Final - Massimo Gagliardi
 + El proyecto está desarrollado en VSC + Vite y Vercel
 + Se utilizó Material UI y Css peronalizados
 
