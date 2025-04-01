@@ -1,9 +1,11 @@
-# PreEntrega 2 - Massimo Gagliardi
+# Entrega Final 2 - Massimo Gagliardi
++ El proyecto está desarrollado en VSC + Vite y Vercel
++ Se utilizó Material UI y Css peronalizados
 
 # Link del proyecto en VERCEL
 https://react-ecommerce-eta-opal.vercel.app/
 
-# Modificaciones de la Versión Para Entrega Final
+# Modificaciones
 + Se creó el Componente OrderForm.
     + Al Realizar la compra
         + Mostramos Mensaje de "PROCESANDO COMPRA"
