@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useContext, Container } from "react";
+import { useState, useContext } from "react";
 import {TextField, Button, FormGroup, Typography, Alert, Divider, Box} from '@mui/material';
 import { doc, addDoc, collection, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase/client';
@@ -90,7 +90,7 @@ const OrderForm = ({lista, precioTotal, closeForm}) => {
         <>
         {orderNumber ? (
         <>
-        <Box sx={{alignContent:'center'}}>
+        <Box sx={{alignContent:'center', textAlign:'center'}}>
             <Typography sx={{color:'#000000', fontWeight:'bold', textAlign:'center'}}>
                 ¡{formData.nombre} FELICIDADES POR TU COMPRA!
             </Typography>
@@ -98,7 +98,7 @@ const OrderForm = ({lista, precioTotal, closeForm}) => {
                 Tu ID de Referencia es
             </Typography>
             <Typography sx={{color:'#ff0000', fontWeight:'bold', textAlign:'center'}}>{orderNumber}</Typography>
-            <Button className='BotonComprar' sx={{margin:1}} variant="outlined"
+            <Button className='BotonComprar' sx={{margin:1, marginTop:4}} variant="outlined"
             onClick={() => {
                 closeForm();
                 clearList();

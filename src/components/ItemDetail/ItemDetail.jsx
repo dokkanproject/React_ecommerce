@@ -25,9 +25,6 @@ const ItemDetail = ({info}) => {
     }));
 
     const {lista, addToList} = useContext(ShopContext)
-
-    // Verificamos si el producto ya está en el carrito
-    const isInCart = (id) => lista.some(item => item.id === id);
     
     return(
         <>
