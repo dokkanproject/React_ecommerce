@@ -1,4 +1,6 @@
 import { createContext, useState } from "react"
+import { doc, updateDoc } from "firebase/firestore"
+import { db } from "../firebase/client"
 
 export const ShopContext = createContext()
 
@@ -56,8 +58,29 @@ export const ShopComponentContext = ({children}) =>
         ));
     };
 
+    // ACTUALIZAMOS EL STOCK DE LOS PRODUCTOS COMPRADOS
+        const updateStock = async (productosComprados) => {
+            try {
+                const updates = productosComprados.map(async (item) => {
+                const productRef = doc(db, "products", item.id);
+                const nuevoStock = item.stock - item.cantidad;
+            
+                if (nuevoStock >= 0) {
+                    await updateDoc(productRef, { stock: nuevoStock });
+                    console.log(`Stock actualizado para ${item.name}: ${nuevoStock}`);
+                } else {
+                    console.error(`Stock insuficiente para ${item.name}`);
+                }
+                });
+            
+                await Promise.all(updates);
+            } catch (error) {
+                console.error("Error actualizando stock:", error);
+            }
+        };
+
     return(
-        <ShopContext.Provider value={{lista, addToList, removeFromList, clearList, actualizaCantidad, handleCount}}>
+        <ShopContext.Provider value={{lista, addToList, removeFromList, clearList, actualizaCantidad, handleCount, updateStock}}>
             {children}
         </ShopContext.Provider>
 

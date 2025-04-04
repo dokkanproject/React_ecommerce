@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { useState, useContext } from "react";
 import {TextField, Button, FormGroup, Typography, Alert, Divider, Box} from '@mui/material';
-import { doc, addDoc, collection, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase/client';
 import { ShopContext } from '../../context/ShopContext';
 
 const OrderForm = ({lista, precioTotal, closeForm}) => {
     
     console.log("Obtenemos la LISTA "+lista)
-    const {clearList} = useContext(ShopContext)
+    const {clearList, updateStock} = useContext(ShopContext)
 
     const [error, setError] = useState("");
     const [orderProcess, setOrderProcess] = useState("")
@@ -17,27 +17,6 @@ const OrderForm = ({lista, precioTotal, closeForm}) => {
 
     const handleChange = (name, e) => {
         setFormData({...formData,[name]: e,});
-    };
-
-    // ACTUALIZAMOS EL STOCK DE LOS PRODUCTOS COMPRADOS
-    const updateStock = async (productosComprados) => {
-        try {
-            const updates = productosComprados.map(async (item) => {
-            const productRef = doc(db, "products", item.id);
-            const nuevoStock = item.stock - item.cantidad;
-        
-            if (nuevoStock >= 0) {
-                await updateDoc(productRef, { stock: nuevoStock });
-                console.log(`Stock actualizado para ${item.name}: ${nuevoStock}`);
-            } else {
-                console.error(`Stock insuficiente para ${item.name}`);
-            }
-            });
-        
-            await Promise.all(updates);
-        } catch (error) {
-            console.error("Error actualizando stock:", error);
-        }
     };
 
     // CREAMOS LA ORDEN DE COMPRA
